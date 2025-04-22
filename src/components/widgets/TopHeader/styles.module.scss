@@ -7,7 +7,7 @@
     top: 0px;
     left: 0px;
     width: 100%;
-    background-color: #fff;
+    background-color: $primary_black;
     box-shadow: $box-shadow-2;
 
     .header_container {
@@ -23,14 +23,12 @@
             width: 100%;
             padding: 0px 20px;
 
-            @media(max-width:1000px) {
-                padding: 15px 20px;
-            }
-
-            @media(max-width:768px) {
+            @media(max-width:1150px) {
                 padding: 10px 20px;
 
             }
+
+  
 
             .left_items {
                 width: 100%;
@@ -42,29 +40,17 @@
 
                     .logo_tag {
                         display: flex;
+                        align-items: center;
+                        justify-content: space-between;
 
-                        img {
-                            @media(max-width:1400px) {
-                                object-fit: cover;
-                            }
 
-                            @media(max-width:1000px) {
-                                height: 52px;
-                                object-fit: none;
 
-                            }
-
-                            @media(max-width:768px) {
-                                width: 180px;
-                                object-fit: contain;
-                            }
-
-                            @media(max-width:450px) {
-                                width: 175px;
-                                object-fit: contain;
-                            }
+                        span {
+                            font-size: 45px;
+                            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                            color: wheat;
+                            letter-spacing: 2px;
                         }
-
                     }
 
                 }
@@ -83,21 +69,6 @@
                     gap: 1rem;
                 }
 
-                .currency_dropdown {
-                    cursor: pointer;
-                    position: relative;
-                    user-select: none;
-                    font-size: 13px;
-                    font-weight: 500;
-                    width: 38px;
-                    text-align: center;
-
-                    .text {
-                        background-color: $--color-light-5;
-                        padding: 0px 7px;
-                    }
-
-                }
 
                 .language_dropdown {
                     cursor: pointer;
@@ -105,7 +76,7 @@
                     user-select: none;
 
                     .img_div {
-                        background-color: $--color-light-5;
+                        background-color: $--color-black-1;
                         padding: 0px 5px;
                     }
                 }
@@ -119,6 +90,7 @@
                     width: 20px;
                     align-items: center;
                     justify-content: flex-end;
+                    color: $--color-light-1;
 
                     @media (max-width: 1150px) {
                         display: flex;

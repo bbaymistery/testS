@@ -17,7 +17,7 @@
             justify-content: space-between;
 
             .head_title {
-                color: $dark-1;
+                color: $--color-black-2;
                 cursor: pointer;
                 z-index: 99;
                 text-align: left;
@@ -50,7 +50,7 @@
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
         text-align: left;
-        color: $dark-1;
+        color: $--color-black-2;
 
         .number {
             font-weight: bold;

@@ -6,7 +6,7 @@
         @media(max-width:1200px) {
             display: block;
             position: absolute;
-            top: 60px;
+            top: 82px;
             left: 0;
             right: 0;
             opacity: 0;
@@ -15,20 +15,20 @@
         }
 
         .menu_content_ul {
-            height: 100vh;
-            padding: 10px 20px
+            padding: 10px 20px;
+            background-color: $--color-black-1;
         }
 
         ul {
             padding: 0px 35px;
 
             li {
-                border-bottom: 1px solid $--color-light-4;
+                border-bottom: 1px solid $--color-light-1;
 
                 &:hover {
                     a {
                         transition: 0.2s linear;
-                        color: $--color-accent-1;
+                        color: $--color-red-2;
                     }
                 }
 
@@ -36,7 +36,8 @@
                     display: flex;
                     justify-content: space-between;
                     padding: 8px 8px;
-                    color: $--color-dark-1;
+                    color: $--color-light-1;
+
 
                     span {
                         font-size: 18px;
@@ -52,38 +53,4 @@
         opacity: 1;
         visibility: visible;
         transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
-        background: white;
-
-        ul {
-
-            .has_children {
-                .hoverUl {
-                    li {
-                        padding: 4px 0;
-
-                        &:last-child {
-                            border: none;
-                        }
-
-                        &:hover {
-                            cursor: pointer;
-                            color: $--color-accent-1;
-                        }
-                    }
-                }
-                
-                .nocursor {
-                    pointer-events: none;
-
-                    span {
-                        cursor: pointer !important;
-                    }
-                }
-
-                .first_child_a {
-                    padding: 8px;
-                    color: $--color-accent-1;
-                }
-            }
-        }
     }

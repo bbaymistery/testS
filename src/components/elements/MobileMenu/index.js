@@ -1,23 +1,22 @@
 import Link from 'next/link';
 import React from 'react';
-import { navigator } from '../../../constants/navigatior';
 import styles from "./styles.module.scss";
-import { generalAllTranslations } from '../../../constants/generalTranslataions';
+import navigator from '../../../constants/navigatior';
+import generalAllTranslations from '../../../constants/generalAllTranslations';
 
-const MobileMenu = (({ handleClickNavLinkMobileMenuNotList, language, openMenu, }) => { 
+const MobileMenu = (({ handleClickNavLinkMobileMenuNotList, language, openMenu, }) => {
     return (
         <div className={`${styles.header_content_menu_mobile} ${openMenu ? styles.active_header_content_menu_mobile : ""} `}>
             <ul className={styles.menu_content_ul}>
                 {navigator.map((item, index) => {
-                    let { path, innerText, list, type, title, firstChild, strInnerText } = item
+                    let { path, innerText,  strInnerText } = item
                     return (
-                        <li key={innerText} className={`${styles.li_item} ${type === "list" ? styles.has_children : ""}`} id="navLink">
-                            <Link onClick={() => handleClickNavLinkMobileMenuNotList({ index })}
+                        <li key={path} id="navLink">
+                            <Link
+                                onClick={() => handleClickNavLinkMobileMenuNotList({ index })}
                                 href={`${language === 'en' ? `${path}` : `${language}${path}`}`}
                                 title={generalAllTranslations?.[strInnerText]?.[language]}
-                                className={`${!path.length ? styles.nocursor : ""}  ${firstChild ? styles.first_child_a : ""} `}
                                 target={index === 4 ? "_blank" : ""}
-
                             >
                                 <span>{generalAllTranslations?.[strInnerText]?.[language]}</span>
                             </Link>

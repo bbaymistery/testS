@@ -1,4 +1,4 @@
-export const generalAllTranslations = {
+const generalAllTranslations = {
   strHome: {
     en: "Home",
     tr: "Anasayfa",
@@ -27,3 +27,4 @@ export const generalAllTranslations = {
     az: "Haqqımızda",
   },
 };
+export default generalAllTranslations;

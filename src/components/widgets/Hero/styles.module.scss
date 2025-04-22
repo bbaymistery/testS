@@ -41,7 +41,7 @@
         &_container {
             .points_content {
                 .title {
-                    color: $dark-1;
+                    color: $--color-black-2;
                     font-size: 34px;
                     margin-bottom: 0px;
                     margin-left: 3px;
@@ -222,7 +222,7 @@
                             p {
                                 font-size: 14px;
                                 font-weight: 600;
-                                color: $dark-1;
+                                color: $--color-black-2;
                                 text-transform: capitalize;
                                 padding-right: 8px;
                                 padding-bottom: 10px;

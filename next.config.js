@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 async function getRoutes() {
-  let languages = ["en", "tr", "az", "ru"]
+  let languages = ["en", "tr", "az", "ru", "es", "it", "zh",];
   const singleRoutes = languages.map(lang => ({ source: `/${lang}`, destination: '/', locale: false }));
   const rewriteRules = [...singleRoutes,];
   return rewriteRules

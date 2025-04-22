@@ -4,91 +4,70 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import store from "../../../store/store";
 import { useRouter } from "next/router";
-// import { extractLanguage } from "../../../helpers/extractLanguage";
-// import OutsideClickAlert from "../../elements/OutsideClickAlert";
-import dynamic from 'next/dynamic'
-// import { setCookie } from "../../../helpers/cokieesFunc";
-import logoImage from '../../../../public/logos/logo.webp'
+import { extractLanguage } from "../../../helpers/extractLanguage";
+import OutsideClickAlert from "../../elements/OutsideClickAlert";
+import { setCookie } from "../../../helpers/cokieesFunc";
+import logoImage from '../../../../public/logos/logooText1.png'
 
-import airportTranslations from "../../../constants/generalTranslataions";
-// import DropDownAllCurrencies from "../../elements/DropDownAllCurrencies";
+import airportTranslations from "../../../constants/generalAllTranslations";
 
-// const DropDownAllLanguages = dynamic(() => import('../../elements/DropDownAllLanguages'),);
 // const MobileMenu = dynamic(() => import('../../elements/MobileMenu'),);
 import DesktopMenu from "../../elements/DesktopMenu";
+import DropDownAllLanguages from "../../elements/DropDownAllLanguages";
 import MobileMenu from "../../elements/MobileMenu";
+import websiteLanguagesWithInnerText from "../../../constants/languages";
 const Header = () => {
-  const router = useRouter()
   const dispatch = useDispatch()
+  const router = useRouter()
   const [openMenu, setOpenMenu] = useState(false) //mobile
   const [languageStatus, setLanguageStatus] = useState(false)
-  const [currencyStatus, setCurrencyStatus] = useState(false)
   const { params: { language, } } = useSelector(state => state.generalActions)
 
   const handleLanguage = async (params = {}) => {
-    // let { e, text, key, direction, index } = params
-    // setCookie("lang", key, 7);
-    // dispatch({ type: "SET_NEW_LANGUAGE", data: { languageKey: key, direction, langIndex: index } })
-    // //url configuration based on language we select
-    // let checkTheUrlIfLangExist = extractLanguage(router.asPath) //tr es or it
-    // //to be sure that selected language is exist among languages or not
-    // let hasEn = appData?.languages.some((language) => language.value === checkTheUrlIfLangExist);
-    // if (checkTheUrlIfLangExist && hasEn) {
-    //   //if length is 3 it means we r in the taxi deaals
-    //   let replacedString = `${key === "en" ? "" : key}${router.asPath.length === 3 ? "" : "/"}`
+    const { key, direction, index } = params;
 
-    //   let url = router.asPath.replace(/^\/([a-z]{2})\/?/i, replacedString)
-    //   //tr|it|sp/transfer-details...  replacing withh
-    //   url = key === 'en' ? `${url}` : `/${url}`
+    // 🍪 1. Yeni dili cookie'ye kaydet (7 gün boyunca saklanacak)
+    setCookie("lang", key, 7);
 
-    //   router.push(url);
-    // }
-    // else {
-    //   //then when ever i change language i will add tr it ar
-    //   //if it is english then  we dont need lang atrribute=>>>>>     /transfer-details...
-    //   let url = `/${key === "en" ? "" : key}${router.asPath}`
-    //   router.push(url);
-    // }
-    // //make hidden language dropdown in mobile menu After clicking
-    // setLanguageStatus(!languageStatus)
+    // 🔁 2. Redux'a yeni dili ve yön bilgilerini gönder
+    dispatch({ type: "SET_NEW_LANGUAGE", data: { languageKey: key, direction, langIndex: index } });
 
-  }
+    // 🌐 3. Mevcut URL'den dili çıkart (örn. "/tr/abc" → "tr")
+    const checkTheUrlIfLangExist = extractLanguage(router.asPath);
 
-  const handleCurrency = (params = {}) => {
-    let { e, text, currencyId } = params
-    dispatch({ type: "SET_CURRENCY", data: { currencyId: +currencyId, text } })
-    setCurrencyStatus(false)
-  }
+    // ✅ 4. Çıkan dil gerçekten sistemde kayıtlı mı (bazı sayfalar hatalı olabilir)
+    const hasLang = websiteLanguagesWithInnerText.some((lang) => lang.value === checkTheUrlIfLangExist);
+
+    if (checkTheUrlIfLangExist && hasLang) {
+      // 🔁 5. Eğer URL zaten dil içeriyorsa onu yeni dil ile değiştir
+      const replacedPrefix = `${key === "en" ? "" : key}${router.asPath.length === 3 ? "" : "/"}`;
+      let url = router.asPath.replace(/^\/([a-z]{2})\/?/i, replacedPrefix);
+
+      // Eğer yeni dil "en" değilse başa yeniden slash ekle
+      url = key === "en" ? url : `/${url}`;
+
+      router.push(url); // 🌍 Yeni URL'ye yönlendirme
+    } else {
+      // 🆕 Eğer URL'de önceki bir dil yoksa → direkt yeni dili ekle
+      const url = `/${key === "en" ? "" : key}${router.asPath}`;
+      router.push(url);
+    }
+    // 📱 Mobil menüdeki dil dropdown'unu gizle
+    setLanguageStatus(false);
+  };
+
+
 
   const toggleMenu = () => setOpenMenu(!openMenu)
 
   //for language dropdown
-  const outsideClickDropDown = useCallback((e) => {
-    setLanguageStatus(false);
-    setCurrencyStatus(false);
-  }, [languageStatus, currencyStatus]);
-
+  const outsideClickDropDown = () => setLanguageStatus(false);
 
   //when we click lang text it opens dropdown
-  const setOpenLanguageDropdown = () => {
-    setCurrencyStatus(false)
-    setLanguageStatus(!languageStatus)
-
-  }
-  const setOpenCurrencyDropDown = () => {
-    setLanguageStatus(false)
-    setCurrencyStatus(!currencyStatus)
-  }
+  const setOpenLanguageDropdown = () => setLanguageStatus(!languageStatus)
 
 
 
-  const handleClickNavLinkMobileMenuNotList = ({ index }) => {
-    if (index === 0) {
-      dispatch({ type: "RESET_SELECTED_POINTS", data: { journeyType } });
-      dispatch({ type: "SET_NAVBAR_TAXI_DEALS", data: { hasTaxiDeals: "heathrow" } });
-    }
-    toggleMenu();
-  }
   return (
     <header className={styles.header} id="navbar_container" >
       <div className={styles.header_container}>
@@ -96,41 +75,28 @@ const Header = () => {
           <div className={styles.left_items}>
             <div className={styles.left_items_flex_div}>
               <a href={language === 'en' ? '/' : `/${language}`} className={`${styles.logo_tag}`}  >
-                <Image src={logoImage} alt="APL transfers" width={255} height={70} priority />
+                <Image src={logoImage} alt="APL transfers" width={240} height={50} priority />
+                {/* <span>BestSushi</span> */}
               </a>
+
               <DesktopMenu airportTranslations={airportTranslations} journeyType={0} language={language} />
               {/* mobile  */}
-              {openMenu ?
-                <MobileMenu
-                  airportTranslations={airportTranslations}
-                  openMenu={true}
-                  handleClickNavLinkMobileMenuNotList={handleClickNavLinkMobileMenuNotList}
-                  language={language}
-                />
-                : <></>}
+              {openMenu &&
+                <MobileMenu airportTranslations={airportTranslations} openMenu={openMenu} language={language} />}
             </div>
           </div>
 
           <div className={styles.right_items}>
 
-            <div className={`${styles.currency_dropdown}`} >
-              <div className={styles.text} onClick={setOpenCurrencyDropDown} data-name="currency">
-                {/* {selectedCurrency.currency} */}
-              </div>
-              {/* {currencyStatus ?
-                <OutsideClickAlert onOutsideClick={outsideClickDropDown}>
-                  <DropDownAllCurrencies currencyStatus={currencyStatus} handleCurrency={handleCurrency} />
-                </OutsideClickAlert> : <></>} */}
-            </div>
 
             <div className={`${styles.language_dropdown}`} >
               <div className={styles.img_div} onClick={setOpenLanguageDropdown} data-name="language">
                 <Image src={`/languages/${language}.gif`} width={20} height={11} priority alt={language} data-name="language" />
               </div>
-              {/* {languageStatus ?
+              {languageStatus ?
                 <OutsideClickAlert onOutsideClick={outsideClickDropDown}>
                   <DropDownAllLanguages languageStatus={languageStatus} handleLanguage={handleLanguage} />
-                </OutsideClickAlert> : <></>} */}
+                </OutsideClickAlert> : <></>}
             </div>
 
             <div onClick={toggleMenu} className={`${styles.menu}`} id="menu">

@@ -2,7 +2,8 @@
 
     .all_languages {
         position: absolute;
-        background-color: white;
+        background-color: $primary_black;
+        ;
         top: 50px;
         left: 0px;
         width: 285px;
@@ -19,7 +20,7 @@
         box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
         user-select: none;
 
-   
+
 
         &:before {
             content: '';
@@ -28,9 +29,8 @@
             left: 20px;
             width: 10px;
             height: 10px;
-            background-color: white;
+            background-color: $--color-black-1 !important;
             transform: rotate(45deg);
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
             left: 258px;
         }
 
@@ -47,7 +47,7 @@
 
             span {
                 margin-left: 10px;
-                color: black !important;
+                color: $--color-light-1 !important;
 
                 i {
                     font-size: 11px;
@@ -57,7 +57,7 @@
 
 
             &:hover {
-                background-color: rgba(53, 84, 209, 0.1);
+                background-color: $--color-black-1;
                 transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
             }
         }

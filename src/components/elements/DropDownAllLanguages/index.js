@@ -1,10 +1,11 @@
 import React from 'react'
 import styles from "./styles.module.scss"
 import Image from 'next/image'
+import websiteLanguagesWithInnerText from '../../../constants/languages'
 const DropDownAllLanguages = ({ languageStatus, handleLanguage }) => {
     return (
         <div className={styles.all_languages} style={{ opacity: `${languageStatus ? 1 : 0}`, visibility: `${languageStatus ? "visible" : "hidden"}` }} >
-            {languages.map((item, index) => {
+            {websiteLanguagesWithInnerText.map((item, index) => {
                 let { innerText: text, value: key, dir: direction } = item
                 return (
                     <div className={styles.content} name={key} key={index} onClick={(e) => handleLanguage({ e, text, key, direction, index })}>
