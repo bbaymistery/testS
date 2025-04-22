@@ -1,0 +1,89 @@
+    @import '../../../styles/variables';
+
+    .header_content_menu_mobile {
+        display: none;
+
+        @media(max-width:1200px) {
+            display: block;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            opacity: 0;
+            visibility: hidden;
+            height: 100vh;
+        }
+
+        .menu_content_ul {
+            height: 100vh;
+            padding: 10px 20px
+        }
+
+        ul {
+            padding: 0px 35px;
+
+            li {
+                border-bottom: 1px solid $--color-light-4;
+
+                &:hover {
+                    a {
+                        transition: 0.2s linear;
+                        color: $--color-accent-1;
+                    }
+                }
+
+                a {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 8px 8px;
+                    color: $--color-dark-1;
+
+                    span {
+                        font-size: 18px;
+                        text-transform: capitalize;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+
+    .header_content_menu_mobile.active_header_content_menu_mobile {
+        opacity: 1;
+        visibility: visible;
+        transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+        background: white;
+
+        ul {
+
+            .has_children {
+                .hoverUl {
+                    li {
+                        padding: 4px 0;
+
+                        &:last-child {
+                            border: none;
+                        }
+
+                        &:hover {
+                            cursor: pointer;
+                            color: $--color-accent-1;
+                        }
+                    }
+                }
+                
+                .nocursor {
+                    pointer-events: none;
+
+                    span {
+                        cursor: pointer !important;
+                    }
+                }
+
+                .first_child_a {
+                    padding: 8px;
+                    color: $--color-accent-1;
+                }
+            }
+        }
+    }
