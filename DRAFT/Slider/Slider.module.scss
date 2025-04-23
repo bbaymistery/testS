@@ -1,0 +1,228 @@
+
+.slider_container {
+    height: 750px;
+    width: 100%;
+    // border: 1px solid red;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    // @include breakpoint-down(medium) {
+    //     height: 650px;
+
+    // }
+
+    // @include breakpointMax(520px) {
+    //     height: 550px;
+
+    // }
+    @media screen and (max-width: 768px) {
+        height: 650px;
+    }
+
+    @media screen and (max-width: 520px) {
+        height: 550px;
+    }
+
+
+    .slider {
+        position: relative;
+        width: 100%;
+        min-height: 100%;
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+
+
+
+            .slide_img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+
+            .container_auto_center {
+
+                max-width: 1452px;
+                margin: 0 auto;
+
+                @media screen and (max-width: 520px) {
+                    text-align: center;
+                }
+
+
+                &::after {
+                    background-color: rgba(0, 0, 0, 0.4);
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    content: '';
+                    z-index: 0;
+                }
+
+                .intro {
+                    position: absolute;
+                    color: white;
+                    width: 45%;
+                    margin-top: 150px;
+                    margin-left: 50px;
+                    font-weight: bold;
+                    z-index: 999;
+
+                    @media screen and (max-width: 768px) {
+                        width: 80%;
+
+                    }
+
+                    @media screen and (max-width: 520px) {
+                        margin-top: 150px;
+
+                    }
+
+
+                    .intro_welcome {
+                        font-size: 19px;
+                        color: whitesmoke;
+                    }
+
+
+                    .intro_header {
+                        font-size: 74px;
+                        color: white;
+
+            
+
+                        @media screen and (max-width: 990px) {
+                            font-size: 644px;
+                        }
+
+                        @media screen and (max-width: 768px) {
+                            font-size: 19px;
+                        }
+
+
+
+                    }
+
+                    .intro_desc {
+                        font-size: 24px;
+                        color: rgb(189, 189, 189);
+
+                        // @include breakpoint-down(medium) {
+                        //     font-size: 19px;
+
+                        // }
+
+                        // @include breakpoint-down(small) {
+                        //     font-size: 16px;
+                        //     margin: 2rem 0rem;
+
+                        // }
+                    }
+
+                    .login_register {
+
+                        &_button {
+                            background-color: rgb(201, 63, 63);
+                            padding: 13px;
+                            color: white;
+                            border: none;
+                            cursor: pointer;
+
+                            &:active {
+                                transform: scale(1.03);
+                            }
+
+                            // @include breakpoint-down(small) {
+                            //     font-size: 11px;
+                            // }
+
+                        }
+                    }
+
+                }
+            }
+
+        }
+
+        .navigation {
+            height: 500px;
+            display: flex;
+            position: relative;
+            top: 350px;
+            justify-content: space-between;
+            opacity: 0;
+
+            padding: 0px 2rem;
+
+            .prev_btn,
+            .next_btn {
+                z-index: 9999;
+                font-size: 2rem;
+                color: white;
+                background-color: rgba(0, 0, 0, 0.76);
+                padding: 10px;
+                cursor: pointer;
+
+                // @include breakpoint-down(small) {
+                //     text-align: center;
+                //     margin-top: 60px;
+                // }
+            }
+
+            .prev_btn {
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+            }
+
+            .next_btn {
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+            }
+        }
+
+
+        &:hover {
+            .navigation {
+                opacity: 1;
+                transition: ease .5s;
+            }
+        }
+
+        .visibility_navigation {
+            z-index: 999;
+            display: flex;
+            justify-content: flex-end;
+            max-width: 1452px;
+            margin: 0 auto;
+
+            .slide_icon {
+                z-index: 999;
+                background-color: rgb(249, 58, 58);
+                width: 20px;
+                height: 8px;
+                margin: 0 6px;
+                border-radius: 2px;
+                margin-top: 100px;
+                cursor: pointer;
+
+                &:hover {
+                    transform: scale(1.2);
+                    transition: .5s ease;
+                }
+            }
+        }
+
+    }
+}

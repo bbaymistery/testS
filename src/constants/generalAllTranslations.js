@@ -28,3 +28,5 @@ const generalAllTranslations = {
   },
 };
 export default generalAllTranslations;
+
+

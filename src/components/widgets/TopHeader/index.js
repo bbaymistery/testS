@@ -7,11 +7,8 @@ import { useRouter } from "next/router";
 import { extractLanguage } from "../../../helpers/extractLanguage";
 import OutsideClickAlert from "../../elements/OutsideClickAlert";
 import { setCookie } from "../../../helpers/cokieesFunc";
-import logoImage from '../../../../public/logos/logooText1.png'
-
+import logoImage from '../../../../public/logos/pandalogo.webp'
 import airportTranslations from "../../../constants/generalAllTranslations";
-
-// const MobileMenu = dynamic(() => import('../../elements/MobileMenu'),);
 import DesktopMenu from "../../elements/DesktopMenu";
 import DropDownAllLanguages from "../../elements/DropDownAllLanguages";
 import MobileMenu from "../../elements/MobileMenu";
@@ -75,8 +72,14 @@ const Header = () => {
           <div className={styles.left_items}>
             <div className={styles.left_items_flex_div}>
               <a href={language === 'en' ? '/' : `/${language}`} className={`${styles.logo_tag}`}  >
-                <Image src={logoImage} alt="APL transfers" width={240} height={50} priority />
-                {/* <span>BestSushi</span> */}
+                <Image src={logoImage} alt="Best Sushi" width={240} height={50} priority />
+                <span className={styles.wave_text}>
+                  {"BestSushi".split("").map((char, index) => (
+                    <span key={index} style={{ animationDelay: `${index * 0.1}s` }} className={styles.wave_letter}>
+                      {char}
+                    </span>
+                  ))}
+                </span>
               </a>
 
               <DesktopMenu airportTranslations={airportTranslations} journeyType={0} language={language} />
@@ -87,8 +90,6 @@ const Header = () => {
           </div>
 
           <div className={styles.right_items}>
-
-
             <div className={`${styles.language_dropdown}`} >
               <div className={styles.img_div} onClick={setOpenLanguageDropdown} data-name="language">
                 <Image src={`/languages/${language}.gif`} width={20} height={11} priority alt={language} data-name="language" />
@@ -101,6 +102,10 @@ const Header = () => {
 
             <div onClick={toggleMenu} className={`${styles.menu}`} id="menu">
               {!openMenu ? <i className="fa-solid fa-bars"></i> : <i className="fa-solid fa-xmark"></i>}
+            </div>
+            <div className={styles.budget}>
+              <span>1</span>
+              <i className="fa-solid fa-cart-shopping"></i>
             </div>
           </div>
         </div>

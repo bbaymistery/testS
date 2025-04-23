@@ -1,0 +1,92 @@
+@import '../../../styles/variables'; // Renk değişkenlerini kullanmak için
+
+.sliderContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1320px;
+    
+    margin: 0 auto;
+    .mainImage {
+        position: relative;
+        width: 100%;
+        height: 80vh; // Görsel ekranın %80'ini kaplar
+        overflow: hidden;
+margin-top: 10px;
+        .imageWrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0; // Başta görünmez
+            transition: opacity 1s ease-in-out; // Smooth geçiş animasyonu
+
+            &.active {
+                opacity: 1; // Aktif olan görünür
+                z-index: 1; // Öne gelsin
+            }
+
+            img {
+                border-radius: 12px; // Köşeleri yuvarla
+            }
+        }
+    }
+
+    .overlay {
+        position: absolute;
+        top: 30%;
+        width: 450px;
+        background-color: $--color-lightblack-1;
+        box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+
+        .overlayText {
+
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            background-color: $--color-lightblack-1; // Arka plan yarı saydam siyah
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        .overlayText2 {
+
+            font-size: 2rem;
+            font-weight: bold;
+            color: $--color-light-1; // Beyaz
+            background-color: $--color-lightblack-1; // Arka plan yarı saydam siyah
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 18px !important;
+
+            p:nth-child(2) {
+                margin-top: 16px;
+                font-size: 15px;
+            }
+        }
+    }
+
+    .thumbnails {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 15px;
+
+        .thumbnail {
+            cursor: pointer;
+            opacity: 0.5; // Pasif görünüm
+            transition: opacity 0.3s ease;
+            border-radius: 6px;
+            overflow: hidden;
+            width: 20px;
+            height: 5px;
+            background-color: $--color-wheat; // Tanımlı renk değişkeni (örneğin açık sarı)
+
+            &.active,
+            &:hover {
+                opacity: 1;
+                border: 2px solid $--color-wheat; // Aktifken ya da hover'da vurgulu olsun
+            }
+        }
+    }
+}

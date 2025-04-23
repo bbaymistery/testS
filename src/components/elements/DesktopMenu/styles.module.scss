@@ -14,8 +14,8 @@
 
                      .active {
                          font-weight: bold !important;
-                         border-bottom: 1px solid $--color-red-2;
-                         color: $--color-red-2 !important;
+                         border-bottom: 1px solid $--color-wheat;
+          
                      }
 
                      a {
@@ -24,7 +24,7 @@
                          font-size: 16px;
                          text-transform: capitalize;
                          text-decoration: none;
-                         color: $--color-light-1;
+                         color: $--color-wheat;
 
                          font-weight: 500;
 
@@ -34,7 +34,8 @@
                          }
 
                          &:hover {
-                             color: $--color-red-1;
+                            color: $--color-light-2;
+
 
                          }
 

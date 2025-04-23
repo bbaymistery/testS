@@ -1,4 +1,4 @@
-const isDevelopment = false; // localohst -> true || live -> false
+const isDevelopment = true; // localohst -> true || live -> false
 const env = {
     websiteDomain: isDevelopment ? "http://localhost:2000"  : "https://bestsushi.az/",
     apiDomain: "",

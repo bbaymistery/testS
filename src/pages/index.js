@@ -1,5 +1,5 @@
 import GlobalLayout from "../components/layouts/GlobalLayout";
-import InitialHero from "../components/widgets/InitialHero/ndex";
+import InitialHero from "../components/widgets/InitialHero";
 
 
 export default function Home(props) {
