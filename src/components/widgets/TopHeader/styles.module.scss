@@ -46,12 +46,18 @@
                             width: 65px;
                             height: 65px;
                             margin-bottom: -10px;
+
+                            @media(max-width:450px) {
+                                width: 40px;
+                                height: 40px;
+                            }
                         }
 
                         .wave_text {
                             display: inline-block;
                             margin-left: 10px;
-margin-bottom: -10px;
+                            margin-bottom: -10px;
+
                             .wave_letter {
                                 display: inline-block;
                                 font-size: 35px;
@@ -59,6 +65,9 @@ margin-bottom: -10px;
                                 color: $--color-wheat;
                                 letter-spacing: 2px;
                                 margin-left: 2px;
+                                @media(max-width:450px) {
+                                 font-size: 22px;
+                                }
                                 animation: wave 1.5s infinite ease-in-out;
                             }
                         }
@@ -145,11 +154,17 @@ margin-bottom: -10px;
         }
     }
 }
+
 @keyframes wave {
-    0%, 10%, 90%, 100% {
-      transform: translateY(0);
+
+    0%,
+    10%,
+    90%,
+    100% {
+        transform: translateY(0);
     }
+
     50% {
-      transform: translateY(-2px);
+        transform: translateY(-2px);
     }
-  }
+}

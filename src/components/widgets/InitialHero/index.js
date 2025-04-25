@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 const InitialHero = () => {
   
   return (
-    <div className={styles.page}>
+    <div className={"page"}>
       <ImageSlider />
     </div>
   )

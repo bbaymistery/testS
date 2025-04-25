@@ -3,8 +3,17 @@
 async function getRoutes() {
   let languages = ["en", "tr", "az", "ru", "es", "it", "zh",];
   const singleRoutes = languages.map(lang => ({ source: `/${lang}`, destination: '/', locale: false }));
-  const rewriteRules = [...singleRoutes,];
-  return rewriteRules
+  const multilingualPages = ["about-us", "menu"];
+  const pageRoutes = languages.flatMap(lang =>
+    multilingualPages.map(page => ({
+      source: `/${lang}/${page}`,
+      destination: `/${page}`,
+      locale: false,
+    }))
+  );
+
+  return [...singleRoutes, ...pageRoutes];
+
 }
 const nextConfig = {
   reactStrictMode: false,

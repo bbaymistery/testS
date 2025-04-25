@@ -14,8 +14,13 @@
             height: 100vh;
         }
 
+        @media(max-width:450px) {
+
+            top: 60px;
+        }
+
         .menu_content_ul {
-            padding: 10px 20px;
+            padding: 0px 20px;
             background-color: $--color-black-1;
         }
 
@@ -23,12 +28,18 @@
             padding: 0px 35px;
 
             li {
-                border-bottom: 1px solid $--color-light-1;
+                &:not(:last-child) {
+                    border-bottom: 1px solid $--color-light-3;
+                }
+            }
+
+            li {
+
 
                 &:hover {
                     a {
                         transition: 0.2s linear;
-                        color: $--color-red-2;
+                        color:$--color-light-2;;
                     }
                 }
 
@@ -36,7 +47,8 @@
                     display: flex;
                     justify-content: space-between;
                     padding: 8px 8px;
-                    color: $--color-light-1;
+                    color: $--color-wheat;
+
 
 
                     span {

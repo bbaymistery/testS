@@ -1,0 +1,100 @@
+@import '../../../styles/variables';
+
+.element_section_inside {
+    // background-color: $bgBlackDark !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    margin-top: 0px !important;
+    background-color: black;
+    height: 155px;
+
+
+    .section_inside {
+
+        // margin: 0px !important;
+        .section_container_inside {
+
+            .boxes {
+                display: flex;
+                justify-content: space-between;
+                height: 155px;
+                align-items: center;
+
+                @media (max-width:910px) {
+                    flex-direction: column;
+                }
+
+                .box {
+
+                    .text_color {
+                        font-size: 15px;
+                        color: white;
+                    }
+
+                    .text_wheat {
+                        color: $--color-wheat;
+                        font-size: 26px;
+                        margin-bottom: 10px;
+                    }
+
+                    .text_white {
+                        color: white;
+                    }
+
+                    &_one {
+                        color: white;
+
+                        .box_desc {
+                            font-size: 18px;
+                            margin-top: 10px;
+
+                            @media (max-width:370px) {
+                                font-size: 11px;
+                            }
+                        }
+
+                        .box_logo {
+                            color: $--color-wheat;
+                            font-size: 26px;
+
+                            i {
+                                margin-left: 10px;
+                                color: $--color-red-2;
+                                animation: heartbeat 1.4s infinite ease-in-out;
+                                display: inline-block;
+                                transform-origin: center;
+                            }
+
+                            @media (max-width:370px) {
+                                font-size: 13px;
+                            }
+                        }
+                    }
+
+                    h4 {
+                        @media (max-width:370px) {
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@keyframes heartbeat {
+    0% {
+      transform: scale(1);
+    }
+    14% {
+      transform: scale(1.3);
+    }
+    28% {
+      transform: scale(1);
+    }
+    42% {
+      transform: scale(1.3);
+    }
+    70% {
+      transform: scale(1);
+    }
+  }

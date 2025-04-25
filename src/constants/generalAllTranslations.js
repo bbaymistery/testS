@@ -26,6 +26,24 @@ const generalAllTranslations = {
     zh: "关于我们",
     az: "Haqqımızda",
   },
+  haveQuestions: {
+    az: "Suallarınız var?",
+    en: "Have Questions",
+    tr: "Sorularınız mı var?",
+    ru: "Есть вопросы?",
+    es: "¿Tienes preguntas?",
+    it: "Hai domande?",
+    zh: "有任何问题？",
+  },
+  support24: {
+    az: "7/24 Fəaliyyətdə olan Müştəri Dəstəyi",
+    en: "24/7 Dedicated Customer Support",
+    tr: "7/24 Özel Müşteri Desteği",
+    ru: "Круглосуточная поддержка клиентов",
+    es: "Soporte al cliente disponible 24/7",
+    it: "Assistenza clienti dedicata 24/7",
+    zh: "全天候客户支持服务",
+  },
 };
 export default generalAllTranslations;
 
