@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import GlobalLayout from "../../components/layouts/GlobalLayout";
 import styles from "./styles.module.scss"
 import DangerouslyInnerHtml from "../../components/elements/DangerouslyInnerHtml";
-import aboutContentByLang from "./aboutContentByLang";
+import aboutContentByLang from "../../constants/aboutContentByLang";
 
 const AboutUs = () => {
 
