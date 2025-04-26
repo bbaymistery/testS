@@ -44,6 +44,15 @@ const generalAllTranslations = {
     it: "Assistenza clienti dedicata 24/7",
     zh: "全天候客户支持服务",
   },
+  followOurTaste: {
+    az: "Ləzzətimizi izləyin",
+    en: "Follow Our Taste",
+    tr: "Lezzetimizi Takip Edin",
+    ru: "Следите за нашим вкусом",
+    es: "Sigue nuestro sabor",
+    it: "Segui il nostro gusto",
+    zh: "跟随我们的美味",
+  },
 };
 export default generalAllTranslations;
 

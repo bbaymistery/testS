@@ -5,11 +5,11 @@
     padding-top: 0px !important;
     padding-bottom: 0px !important;
     margin-top: 0px !important;
-    background-color: black;
-    height: 155px;
+    background-color: #111214;
+    height: 185px;
 
     @media (max-width:990px) {
-        min-height: 155px;
+        min-height: 185px;
         height: 100%;
         padding-top: 40px !important;
         padding-bottom: 40px !important;
@@ -28,12 +28,19 @@
                 align-items: center;
 
                 @media (max-width:990px) {
-                    flex-direction: column;
+                    flex-direction: column-reverse;
                     min-height: 155px;
                     height: 100%;
+                    gap: 1rem;
                 }
 
                 .box {
+                    @media (max-width:990px) {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                    }
 
                     .text_color {
                         font-size: 15px;
@@ -55,11 +62,7 @@
 
                         .box_desc {
                             font-size: 18px;
-                            margin-top: 10px;
 
-                            @media (max-width:370px) {
-                                font-size: 11px;
-                            }
                         }
 
                         .box_logo {
@@ -74,17 +77,22 @@
                                 transform-origin: center;
                             }
 
-                            @media (max-width:370px) {
-                                font-size: 13px;
+                        }
+                    }
+
+                    &_three {
+                        .icons {
+                            display: flex;
+                            justify-content: space-between;
+                            margin-top: 1rem;
+
+                            @media (max-width:990px) {
+                                gap: 1rem;
+                                margin-top: 0.5rem;
                             }
                         }
                     }
 
-                    h4 {
-                        @media (max-width:370px) {
-                            font-size: 18px;
-                        }
-                    }
                 }
             }
         }
