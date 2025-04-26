@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import GlobalLayout from "../components/layouts/GlobalLayout";
 import InitialHero from "../components/widgets/InitialHero";
 import seoContentByLang from "../components/layouts/seoContent";
+import MenuBlog from "../components/widgets/MenuBlog";
 
 
 export default function Home(props) {
@@ -15,6 +16,7 @@ export default function Home(props) {
   return (
     <GlobalLayout title={title} keywords={keywords} description={description}>
       <InitialHero />
+      <MenuBlog />
     </GlobalLayout>
   )
 }

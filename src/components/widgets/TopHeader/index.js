@@ -13,6 +13,7 @@ import DesktopMenu from "../../elements/DesktopMenu";
 import DropDownAllLanguages from "../../elements/DropDownAllLanguages";
 import MobileMenu from "../../elements/MobileMenu";
 import websiteLanguagesWithInnerText from "../../../constants/languages";
+import SideBar from "../SideBar";
 const Header = () => {
   const dispatch = useDispatch()
   const router = useRouter()
@@ -103,10 +104,8 @@ const Header = () => {
             <div onClick={toggleMenu} className={`${styles.menu}`} id="menu">
               {!openMenu ? <i className="fa-solid fa-bars"></i> : <i className="fa-solid fa-xmark"></i>}
             </div>
-            <div className={styles.budget}>
-              <span>1</span>
-              <i className="fa-solid fa-cart-shopping"></i>
-            </div>
+            <SideBar />
+
           </div>
         </div>
       </div>

@@ -53,6 +53,7 @@ const generalAllTranslations = {
     it: "Segui il nostro gusto",
     zh: "跟随我们的美味",
   },
+
 };
 export default generalAllTranslations;
 
