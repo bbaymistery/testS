@@ -3,8 +3,8 @@ import styles from "./categories.styles.module.scss"
 import { useSelector } from 'react-redux';
 import translationOfMenuBlog from './translationOfMenuBlog';
 import MenuItemCard from './MenuItemCard'; // bunu ekledik
-import { menuCategories, menuSubcategories } from './MenuItemCard/menuCartItemConstants';
-import { menuSetTranslations } from './MenuItemCard/menuSetTranslations';
+import { appetizerSubcategories, drinksSubcategories, makiSubcategories, menuCategories, menuSubcategories, nigiriSubcategories, noodlesSubcategories, saladsSubcategories, soupsSubcategories, udonSubcategories } from './MenuItemCard/menuCartItemConstants';
+import { appetizerDescriptions, makiDescriptions, menuSetTranslations, nigiriDescriptions, noodlesDescriptions, saladsDescriptions, soupsDescriptions, udonDescriptions } from './MenuItemCard/menuSetTranslations';
 
 
 
@@ -32,23 +32,183 @@ const Categories = () => {
                     </button>
                 ))}
             </div>
-
-            {/* Eğer aktif kategori 1 ise alt kartları göster */}
-            {activeCategory === 1 && (
+            {activeCategory === 9&& (
                 <div className={styles.menuSubCategories}>
-                    {menuSubcategories.map((item) => {
-
+                    {drinksSubcategories.map((item) => {
                         return (
                             <MenuItemCard
                                 key={item.id}
                                 imageSrc={item.imageUrl}
-                                title={translationOfMenuBlog[item.labelKey]?.[language] || "Title"}
-                                description={menuSetTranslations[item.description]?.[language]}
+                                title={translationOfMenuBlog[item.labelKey]?.[language] || item.title}
                                 price={item.price}
+                                description={false}
+                                ingredients={item.items}
+                                quantity={item.quantity}
+                                language={language}
+                                porsiya={item.porsiya}
                             />
                         )
                     }
+                    )}
+                </div>
+            )}
+            {activeCategory === 8&& (
+                <div className={styles.menuSubCategories}>
+                    {soupsSubcategories.map((item) => {
+                        return (
+                            <MenuItemCard
+                                key={item.id}
+                                imageSrc={item.imageUrl}
+                                title={translationOfMenuBlog[item.labelKey]?.[language] || item.title}
+                                price={item.price}
+                                description={soupsDescriptions[item.description]?.[language] || ""}
+                                ingredients={item.items}
+                                quantity={item.quantity}
+                                language={language}
+                                porsiya={item.porsiya}
+                            />
+                        )
+                    }
+                    )}
+                </div>
+            )}
+      {activeCategory ===7&& (
+                <div className={styles.menuSubCategories}>
+                    {saladsSubcategories.map((item) => {
+                        return (
+                            <MenuItemCard
+                                key={item.id}
+                                imageSrc={item.imageUrl}
+                                title={translationOfMenuBlog[item.labelKey]?.[language] || item.title}
+                                price={item.price}
+                                description={saladsDescriptions[item.description]?.[language] || ""}
+                                ingredients={item.items}
+                                quantity={item.quantity}
+                                language={language}
+                                porsiya={item.porsiya}
+                            />
+                        )
+                    }
+                    )}
+                </div>
+            )}
+            {activeCategory === 6&& (
+                <div className={styles.menuSubCategories}>
+                    {appetizerSubcategories.map((item) => {
+                        return (
+                            <MenuItemCard
+                                key={item.id}
+                                imageSrc={item.imageUrl}
+                                title={translationOfMenuBlog[item.labelKey]?.[language] || item.title}
+                                price={item.price}
+                                description={appetizerDescriptions[item.description]?.[language] || ""}
+                                ingredients={item.items}
+                                quantity={item.quantity}
+                                language={language}
+                                porsiya={item.porsiya}
+                            />
+                        )
+                    }
+                    )}
+                </div>
+            )}
+            {activeCategory === 5 && (
+                <div className={styles.menuSubCategories}>
+                    {noodlesSubcategories.map((item) => {
+                        return (
+                            <MenuItemCard
+                                key={item.id}
+                                imageSrc={item.imageUrl}
+                                title={translationOfMenuBlog[item.labelKey]?.[language] || item.title}
+                                price={item.price}
+                                description={noodlesDescriptions[item.description]?.[language] || ""}
+                                ingredients={item.items}
+                                quantity={item.quantity}
+                                language={language}
+                                porsiya={item.porsiya}
+                            />
+                        )
+                    }
+                    )}
+                </div>
+            )}
 
+            {activeCategory === 4 && (
+                <div className={styles.menuSubCategories}>
+                    {nigiriSubcategories.map((item) => {
+                        return (
+                            <MenuItemCard
+                                key={item.id}
+                                imageSrc={item.imageUrl}
+                                title={translationOfMenuBlog[item.labelKey]?.[language] || item.title}
+                                price={item.price}
+                                description={nigiriDescriptions[item.description]?.[language] || ""}
+                                ingredients={item.items}
+                                quantity={item.quantity}
+                                language={language}
+                                porsiya={item.porsiya}
+                            />
+                        )
+                    }
+                    )}
+                </div>
+            )}
+            {activeCategory === 3 && (
+                <div className={styles.menuSubCategories}>
+                    {udonSubcategories.map((item) => {
+                        return (
+                            <MenuItemCard
+                                key={item.id}
+                                imageSrc={item.imageUrl}
+                                title={translationOfMenuBlog[item.labelKey]?.[language] || item.title}
+                                price={item.price}
+                                description={udonDescriptions[item.description]?.[language] || ""}
+                                ingredients={item.items}
+                                quantity={item.quantity}
+                                language={language}
+                                porsiya={item.porsiya}
+                            />
+                        )
+                    }
+                    )}
+                </div>
+            )}
+            {activeCategory === 2 && (
+                <div className={styles.menuSubCategories}>
+                    {makiSubcategories.map((item) => {
+                        return (
+                            <MenuItemCard
+                                key={item.id}
+                                imageSrc={item.imageUrl}
+                                title={translationOfMenuBlog[item.labelKey]?.[language] || item.title}
+                                description={makiDescriptions[item.description]?.[language] || ""}
+                                price={item.price}
+                                ingredients={item.items}
+                                quantity={item.quantity}
+                                language={language}
+                            />
+                        )
+                    }
+                    )}
+                </div>
+            )}
+
+            {activeCategory === 1 && (
+                <div className={styles.menuSubCategories}>
+                    {menuSubcategories.map((item) => {
+                        return (
+                            <MenuItemCard
+                                key={item.id}
+                                imageSrc={item.imageUrl}
+                                title={translationOfMenuBlog[item.labelKey]?.[language] || item.title}
+                                description={false}
+                                price={item.price}
+                                ingredients={item.items}
+                                quantity={false}
+                                language={language}
+                            />
+                        )
+                    }
                     )}
                 </div>
             )}

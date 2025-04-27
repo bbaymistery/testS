@@ -53,8 +53,24 @@ const generalAllTranslations = {
     it: "Segui il nostro gusto",
     zh: "跟随我们的美味",
   },
+  strPieceWordTranslations: {
+    az: "ədəd",
+    en: "pcs",
+    tr: "adet",
+    ru: "шт.",
+    es: "uds",
+    it: "pz",
+    zh: "个",
+  },
+  strPorsiya:{
+    az: "Porsiya",
+    en: "Portion",
+    tr: "Porsiyon",
+    ru: "Порция",
+    es: "Porción",
+    it: "Porzione",
+    zh: "份量",
+  }
 
 };
 export default generalAllTranslations;
-
-
