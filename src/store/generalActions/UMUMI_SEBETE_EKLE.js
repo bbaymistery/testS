@@ -2,6 +2,7 @@ import {
     menuSubcategories, makiSubcategories, udonSubcategories, nigiriSubcategories, noodlesSubcategories, appetizerSubcategories, soupsSubcategories, drinksSubcategories,
     saladsSubcategories
 } from '../../components/widgets/MenuBlog/MenuItemCard/menuCartItemConstants';
+import { saveToLocalStorage } from '../../helpers/localstorageHelper';
 
 // Tüm ürünleri tek bir array'de birleştiren fonksiyon
 const getAllProducts = () => {
@@ -26,7 +27,6 @@ const UMUMI_SEBETE_EKLE = (params = {}) => {
 
     // Eklenmek istenen ürünü bul
     const productToAdd = allProducts.find(pr => product.id === pr.id);
-    console.log({ product });
 
     if (!productToAdd) {
         console.error("Ürün bulunamadı:", productToAdd.id);
@@ -65,6 +65,9 @@ const UMUMI_SEBETE_EKLE = (params = {}) => {
 
     //calculating all total prices of items toether 
     const totalPrice = newSebet.reduce((acc, item) => acc + item.priceOfItemTotally, 0);
+
+    saveToLocalStorage('sebet', newSebet);
+    saveToLocalStorage('totalPrice', totalPrice);
     return {
         ...state,
         sebet: newSebet,

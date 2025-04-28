@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import store from "../store/store";
 import "../styles/global.scss";
 import localFont from '@next/font/local';
 import { createWrapper } from "next-redux-wrapper";
 import { useRouter } from "next/router";
+import { loadFromLocalStorage } from "../helpers/localstorageHelper";
 const myFont = localFont({ src: '../../public/googleFonts/92zatBhPNqw73oTd4g.woff2' })
 export const MyApp = ({ Component, pageProps }) => {
   //it comes from index js serVerSide props
   const { store, props } = wrapper.useWrappedStore(pageProps);
   const router = useRouter()
+  const dispatch = useDispatch()
   // Save scroll position in localStorage
   const saveScrollPosition = () => {
     const currentScrollPosition = window.scrollY;
@@ -44,6 +46,19 @@ export const MyApp = ({ Component, pageProps }) => {
       router.events.off('routeChangeComplete', restoreScrollPosition);
     };
   }, [router]);
+
+  useEffect(() => {
+    // Load:
+    const sebet = loadFromLocalStorage('sebet');
+    const totalPrice = loadFromLocalStorage('totalPrice');
+    console.log({ sebet });
+    console.log({ totalPrice });
+
+    if (sebet && totalPrice) {
+      dispatch({ type: 'SET_LOCALSTORAGE_ITEMS', data: { sebet, totalPrice } });
+    }
+
+  }, []);
 
   return (<Provider store={store}>
     <main style={{ fontFamily: myFont.style.fontFamily, }} id="general_main_container" >

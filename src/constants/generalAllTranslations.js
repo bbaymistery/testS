@@ -124,6 +124,15 @@ const generalAllTranslations = {
     es: "Eliminar del carrito",
     it: "Rimuovi dal carrello",
     zh: "从购物车中移除",
+  },
+  strIlaveIstekler:{
+    az: "Əlavə istəklər",
+    en: "Additional Requests",
+    tr: "Ek İstekler",
+    ru: "Дополнительные запросы",
+    es: "Solicitudes adicionales",
+    it: "Richieste aggiuntive",
+    zh: "附加请求",
   }
 
 };

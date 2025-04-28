@@ -1,3 +1,5 @@
+import { saveToLocalStorage } from "../../helpers/localstorageHelper";
+
 function DELETE_FROM_THE_SEBET(params = {}) {
     let { state, action } = params;
     let { data: { id } } = action;
@@ -9,6 +11,8 @@ function DELETE_FROM_THE_SEBET(params = {}) {
 
     ///update totalPriceOfSebet
     newState.totalPriceOfSebet = newState.sebet.reduce((acc, item) => acc + item.priceOfItemTotally, 0);
+    saveToLocalStorage('sebet', newState.sebet);
+saveToLocalStorage('totalPrice', newState.totalPriceOfSebet);
     return newState;
 }
 

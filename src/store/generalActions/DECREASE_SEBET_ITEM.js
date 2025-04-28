@@ -1,6 +1,8 @@
+import { saveToLocalStorage } from "../../helpers/localstorageHelper";
+
 const DECREASE_SEBET_ITEM = (params = {}) => {
     let { state, action } = params;
-    const { data:{id} } = action;
+    const { data: { id } } = action;
     let newState = JSON.parse(JSON.stringify(state));
 
     const existingItem = newState.sebet.find(item => item.id === id);
@@ -29,7 +31,8 @@ const DECREASE_SEBET_ITEM = (params = {}) => {
     }
 
     const totalPrice = newSebet.reduce((acc, item) => acc + item.priceOfItemTotally, 0);
-
+    saveToLocalStorage('sebet', newSebet);
+    saveToLocalStorage('totalPrice', totalPrice);
     return {
         ...state,
         sebet: newSebet,

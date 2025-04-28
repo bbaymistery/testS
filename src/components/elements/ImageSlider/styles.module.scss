@@ -15,6 +15,10 @@
         overflow: hidden;
         margin-top: 10px;
 
+        @media(max-width:450px) {
+            height: 70vh;
+        }
+
         .imageWrapper {
             position: absolute;
             width: 100%;
@@ -39,14 +43,14 @@
         width: 450px;
         background-color: $--color-lightblack-1;
         box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
-border-radius: 5px;
+        border-radius: 5px;
+
         @media(max-width:450px) {
             position: relative;
             max-width: 350px;
             width: 100%;
             margin: 0 auto;
             background-color: lighten($--color-lightblack-1, 20%);
-
         }
 
         .overlayText {

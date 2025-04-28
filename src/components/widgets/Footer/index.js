@@ -19,7 +19,7 @@ const Footer = () => {
             <div className={`${styles.box_one} ${styles.box}`}>
               <a className={styles.box_logo} href="/">
                 Bestsushi.az
-                <i class="fa-solid fa-heart"></i>
+                <i className="fa-solid fa-heart"></i>
               </a>
               <p className={styles.box_desc}>
                 Copyright © {currentYear}   Bestsushi.az

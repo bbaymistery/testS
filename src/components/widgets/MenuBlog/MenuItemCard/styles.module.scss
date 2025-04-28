@@ -9,10 +9,19 @@
     font-size: 16px;
     color: $--color-black-1;
 
+    @media (max-width:990px) {
+        font-size: 14px;
+    }
+
     li {
         position: relative;
         padding-left: 18px;
         margin-bottom: 0px;
+
+        @media (max-width:990px) {
+            list-style: none;
+            padding-left: 0px;
+        }
 
         &::before {
             content: "•";
@@ -20,6 +29,10 @@
             left: 0;
             color: $--color-green-1; // veya başka bir renk
             font-weight: bold;
+
+            @media (max-width:990px) {
+                display: none;
+            }
         }
     }
 }
@@ -38,6 +51,10 @@
     height: 100%; // <<< BU ÇOK ÖNEMLİ
     justify-content: space-between; // <<< BU ÇOK ÖNEMLİ
 
+    @media (max-width:990px) {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
     &:hover {
         transform: translateY(-5px);
     }
@@ -47,6 +64,11 @@
 
     width: 220px;
     height: 220px;
+
+    @media (max-width:990px) {
+        width: 170px;
+        height: 170px;
+    }
 
     img {
         width: 100%;
@@ -62,6 +84,11 @@
     margin-bottom: 6px;
     color: #333;
     margin-top: 16px;
+
+    @media (max-width:990px) {
+        font-size: 16px;
+    }
+
 }
 
 .price {
@@ -72,10 +99,19 @@
     display: flex;
     gap: 1rem;
 
+    @media (max-width:990px) {
+        font-size: 13px;
+    }
+
     .quantity {
         font-weight: bold;
         color: $primary_black_2;
         font-size: 14px;
+
+        @media (max-width:990px) {
+            font-size: 13px;
+        }
+
     }
 }
 
@@ -84,6 +120,10 @@
     color: black;
     font-weight: 500;
     margin-bottom: 16px;
+
+    @media (max-width:990px) {
+        font-size: 13px;
+    }
 }
 
 .addButton {
@@ -95,6 +135,10 @@
     cursor: pointer;
     font-weight: bold;
     transition: background 0.3s;
+
+    @media (max-width:990px) {
+        padding: 5px 10px;
+    }
 
     &:hover {
         background: darken($--color-green-1, 5%);

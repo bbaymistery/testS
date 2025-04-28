@@ -41,12 +41,13 @@ const ImageSlider = () => {
                     >
                         {/* Resim bileşeni (Next.js optimize edilmiş) */}
                         <Image
-                            src={img.src}
-                            alt={img.title}
-                            layout="fill"
-                            objectFit="cover"
-                            priority={index === activeIndex}
-                        />
+  src={img.src}
+  alt={img.title}
+  layout="fill"
+  objectFit="cover"
+  priority={index === activeIndex}
+/>
+                        
                         {/* Resmin üzerindeki yazı sadece aktif slide'da görünür */}
                         {index === activeIndex && img.hasDescription && (
                             <div className={styles.overlay}>

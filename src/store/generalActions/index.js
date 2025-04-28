@@ -2,6 +2,7 @@ import CLEAN_SEBET from "./CLEAN_SEBET";
 import DECREASE_SEBET_ITEM from "./DECREASE_SEBET_ITEM";
 import DELETE_FROM_THE_SEBET from "./DELETE_FROM_THE_SEBET";
 import INCREASE_SEBET_ITEM from "./INCREASE_SEBET_ITEM";
+import SET_LOCALSTORAGE_ITEMS from "./SET_LOCALSTORAGE_ITEMS";
 import SET_NEW_LANGUAGE from "./SET_NEW_LANGUAGE";
 import UMUMI_SEBETE_EKLE from "./UMUMI_SEBETE_EKLE";
 const INITIAL_STATE = {
@@ -18,6 +19,10 @@ export const generalActions = (state = INITIAL_STATE, action) => {
     case 'UMUMI_SEBETE_EKLE': {
       return UMUMI_SEBETE_EKLE({ state, action })
     }
+    case 'SET_LOCALSTORAGE_ITEMS': {
+      return SET_LOCALSTORAGE_ITEMS({ state, action })
+    }
+
     case "CLEAN_SEBET": {
       return CLEAN_SEBET({ state, action })
     }
@@ -32,7 +37,7 @@ export const generalActions = (state = INITIAL_STATE, action) => {
     }
     case "DECREASE_SEBET_ITEM": {
       return DECREASE_SEBET_ITEM({ state, action })
-    } 
+    }
     default:
       return state;
   }

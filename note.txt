@@ -1,4 +1,2 @@
-qaldi : dizayn
-menu seyfesi
 localstorage cart ucun
 websayti yuklemek

@@ -14,7 +14,10 @@
         .menublog_section_container {
             position: relative;
 
-         
+            @media (max-width:990px) {
+                max-width: 990px;
+            }
+
         }
     }
 }

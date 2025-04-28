@@ -12,7 +12,8 @@ export const menuCategories = [
 export const menuSubcategories = [
   {
     id: "newSet",
-    labelKey: "strNewSet",
+    title: "New Set",
+    translateTitle: "strNewSet",
     seq: 1.1,
     mainSeq: 1,
     imageUrl: "/setler/newSet.png",
@@ -27,7 +28,8 @@ export const menuSubcategories = [
   },
   {
     id: "hotSet",
-    labelKey: "strHotSet",
+    title: "Hot Set",
+    translateTitle: "strHotSet",
     mainSeq: 1,
     seq: 1.2,
     imageUrl: "/setler/hotset.png",
@@ -42,7 +44,8 @@ export const menuSubcategories = [
   },
   {
     id: "veganSet",
-    labelKey: "strVeganSet",
+    title: "Vegan Set",
+    translateTitle: "strVeganSet",
     mainSeq: 1,
     seq: 1.3,
     imageUrl: "/setler/veganset.png",
@@ -56,7 +59,8 @@ export const menuSubcategories = [
   },
   {
     id: "specialSet",
-    labelKey: "strSpecialSet",
+    title: "Special Set",
+    translateTitle: "strSpecialSet",
     mainSeq: 1,
     seq: 1.9,
     imageUrl: "/setler/specialSett.png",
@@ -71,7 +75,8 @@ export const menuSubcategories = [
   },
   {
     id: "surpriseSet",
-    labelKey: "strSurpriseSet",
+    title: "Surprise Set",
+    translateTitle: "strSurpriseSet",
     mainSeq: 1,
     seq: 1.4,
     imageUrl: "/setler/surprizset.png",
@@ -86,7 +91,8 @@ export const menuSubcategories = [
   },
   {
     id: "luxSet",
-    labelKey: "strLuxSet",
+    title: "Lux Set",
+    translateTitle: "strLuxSet",
     mainSeq: 1,
     seq: 1.5,
     imageUrl: "/setler/luxset.png",
@@ -101,7 +107,8 @@ export const menuSubcategories = [
   },
   {
     id: "presentSet",
-    labelKey: "strPresentSet",
+    title: "Present Set",
+    translateTitle: "strPresentSet",
     mainSeq: 1,
     seq: 1.6,
     imageUrl: "/setler/presentSet.png",
@@ -116,7 +123,8 @@ export const menuSubcategories = [
   },
   {
     id: "elitSet",
-    labelKey: "strElitSet",
+    title: "Elit Set",
+    translateTitle: "strElitSet",
     mainSeq: 1,
     seq: 1.7,
     imageUrl: "/setler/elitset.png",
@@ -132,7 +140,8 @@ export const menuSubcategories = [
   },
   {
     id: "bestSet",
-    labelKey: "strBestSet",
+    title: "Best Set",
+    translateTitle: "strBestSet",
     mainSeq: 1,
     seq: 1.8,
     imageUrl: "/setler/bestset.png",

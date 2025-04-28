@@ -11,7 +11,7 @@ import translationOfMenuBlog from "../MenuBlog/translationOfMenuBlog";
 const SideBar = () => {
   const [openCart, setOpenCart] = useState(false);
   const { params: { language }, sebet, totalPriceOfSebet } = useSelector(state => state.generalActions);
-
+  const [additionalNote, setAdditionalNote] = useState("");
   const toggleCart = () => setOpenCart(!openCart);
   const dispatch = useDispatch();
 
@@ -20,6 +20,32 @@ const SideBar = () => {
     dispatch({ type: 'DELETE_FROM_THE_SEBET', data: { id } });
 
   }
+  const handleCompleteOrder = () => {
+    if (sebet.length === 0) {
+      alert("Sebet boş!");
+      return;
+    }
+
+    const phoneNumber = "994702027780"; // ✅ kendi numaranı koy
+    let message = "Yeni Sifariş:\n\n";
+
+    sebet.forEach((item, index) => {
+      message += `${index + 1}) ${item.title} - ${item.quantityItem} ədəd - ${item.price * item.quantityItem} AZN\n`;
+    });
+
+    message += `\nÜmumi: ${totalPriceOfSebet.toFixed(2)} AZN`;
+
+    // ✅ Eğer kullanıcı ek bir not yazdıysa mesajın sonuna ekle
+    if (additionalNote.trim()) {
+      message += `\n\nİlave Not:\n${additionalNote.trim()}`;
+    }
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    window.open(whatsappUrl, "_blank");
+  };
+
 
   return (
     <>
@@ -36,10 +62,14 @@ const SideBar = () => {
 
         <div className={styles.sidebar_body}>
           {sebet.map(item => {
+
             const matchedCategory = menuCategories.find(category => category.seq === item.mainSeq);
-            const labelKey = matchedCategory?.labelKey;
+            const labelKey = matchedCategory?.labelKey || matchedCategory?.title;
+
             const categoryName = labelKey ? translationOfMenuBlog[labelKey]?.[language] : "Bilinmeyen";
-            const itemName = translationOfMenuBlog[item.labelKey]?.[language]
+            const itemName = translationOfMenuBlog[item.title]?.[language] || item.title
+
+
             return (
               <div key={item.id} className={styles.cart_item}>
                 <h3>{categoryName}</h3> {/* BURASI kategori adı */}
@@ -65,7 +95,15 @@ const SideBar = () => {
           })}
         </div>
 
-
+        {/* ✅ Kullanıcının ek not yazması için alan */}
+        <div className={styles.additional_note_area}>
+          <textarea
+            value={additionalNote}
+            onChange={(e) => setAdditionalNote(e.target.value)}
+            placeholder={generalAllTranslations["strIlaveIstekler"][language]}
+            rows="3"
+          />
+        </div>
         <div className={styles.sidebar_footer}>
           <div className={styles.price_row}>
             <span>{generalAllTranslations["strUmumi"][language]}</span>
@@ -73,7 +111,7 @@ const SideBar = () => {
           </div>
           <div className={styles.footer_buttons}>
             <button onClick={() => dispatch({ type: "CLEAN_SEBET" })} className={styles.clear_cart}>{generalAllTranslations["strSebetiBosalt"]?.[language]}</button>
-            <button className={styles.complete_order}>{generalAllTranslations["strSifarisiTamamla"]?.[language]}</button>
+            <button onClick={() => handleCompleteOrder()} className={styles.complete_order}>{generalAllTranslations["strSifarisiTamamla"]?.[language]}</button>
           </div>
         </div>
       </div>

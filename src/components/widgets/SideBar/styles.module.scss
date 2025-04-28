@@ -162,6 +162,19 @@
     }
 }
 
+.additional_note_area {
+    margin: 15px 0;
+
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        resize: vertical;
+        font-size: 14px;
+    }
+}
+
 
 
 .sidebar_footer {

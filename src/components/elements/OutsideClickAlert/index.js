@@ -22,7 +22,6 @@ function useOutsideAlerter(ref, callback) {
                 document.removeEventListener("mousedown", e => handleClickOutside(e));
             };
         } catch (error) {
-            console.log(error.message)
         }
     }, [ref, callback]);
 }
