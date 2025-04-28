@@ -1,2 +1,0 @@
-localstorage cart ucun
-websayti yuklemek

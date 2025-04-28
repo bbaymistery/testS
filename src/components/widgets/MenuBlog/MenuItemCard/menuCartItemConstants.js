@@ -16,7 +16,7 @@ export const menuSubcategories = [
     translateTitle: "strNewSet",
     seq: 1.1,
     mainSeq: 1,
-    imageUrl: "/setler/newSet.png",
+    imageUrl: "/setler/newSet.webp",
     description: "strNewSetTranslation",
     price: "23",
     items: [
@@ -32,7 +32,7 @@ export const menuSubcategories = [
     translateTitle: "strHotSet",
     mainSeq: 1,
     seq: 1.2,
-    imageUrl: "/setler/hotset.png",
+    imageUrl: "/setler/hotset.webp",
     description: "strHotSetTranslation",
     price: "23",
     items: [
@@ -48,7 +48,7 @@ export const menuSubcategories = [
     translateTitle: "strVeganSet",
     mainSeq: 1,
     seq: 1.3,
-    imageUrl: "/setler/veganset.png",
+    imageUrl: "/setler/veganset.webp",
     description: "strVeganSetTranslation",
     price: "16",
     items: [
@@ -63,7 +63,7 @@ export const menuSubcategories = [
     translateTitle: "strSpecialSet",
     mainSeq: 1,
     seq: 1.9,
-    imageUrl: "/setler/specialSett.png",
+    imageUrl: "/setler/specialSett.webp",
     description: "strSpecialSetTranslation",
     price: "27",
     items: [
@@ -79,7 +79,7 @@ export const menuSubcategories = [
     translateTitle: "strSurpriseSet",
     mainSeq: 1,
     seq: 1.4,
-    imageUrl: "/setler/surprizset.png",
+    imageUrl: "/setler/surprizset.webp",
     description: "strSurpriseSetTranslation",
     price: "20",
     items: [
@@ -95,7 +95,7 @@ export const menuSubcategories = [
     translateTitle: "strLuxSet",
     mainSeq: 1,
     seq: 1.5,
-    imageUrl: "/setler/luxset.png",
+    imageUrl: "/setler/luxset.webp",
     description: "strLuxSetTranslation",
     price: "18",
     items: [
@@ -111,7 +111,7 @@ export const menuSubcategories = [
     translateTitle: "strPresentSet",
     mainSeq: 1,
     seq: 1.6,
-    imageUrl: "/setler/presentSet.png",
+    imageUrl: "/setler/presentSet.webp",
     description: "strPresentSetTranslation",
     price: "19",
     items: [
@@ -127,7 +127,7 @@ export const menuSubcategories = [
     translateTitle: "strElitSet",
     mainSeq: 1,
     seq: 1.7,
-    imageUrl: "/setler/elitset.png",
+    imageUrl: "/setler/elitset.webp",
     description: "strElitSetTranslation",
     price: "28",
     items: [
@@ -144,7 +144,7 @@ export const menuSubcategories = [
     translateTitle: "strBestSet",
     mainSeq: 1,
     seq: 1.8,
-    imageUrl: "/setler/bestset.png",
+    imageUrl: "/setler/bestset.webp",
     description: "strBestSetTranslation",
     price: "35",
     items: [
@@ -164,7 +164,7 @@ export const makiSubcategories = [
     id: "kappaMaki",
     title: "Kappa Maki",
     quantity: "8",
-    imageUrl: "/makiler/kappamaki.png",
+    imageUrl: "/makiler/kappamaki.webp",
     porsiya: false,
     description: "strKappamaki",
     price: "5",
@@ -175,7 +175,7 @@ export const makiSubcategories = [
     id: "chukkaMaki",
     title: "Chukka Maki",
     quantity: "8",
-    imageUrl: "/makiler/chukkamaki.png",
+    imageUrl: "/makiler/chukkamaki.webp",
     description: "strChukkamaki",
     porsiya: false,
     mainSeq: 2,
@@ -186,7 +186,7 @@ export const makiSubcategories = [
     id: "ebiMaki",
     title: "Ebi Maki",
     quantity: "8",
-    imageUrl: "/makiler/ebimaki.png",
+    imageUrl: "/makiler/ebimaki.webp",
     porsiya: false,
     mainSeq: 2,
     description: "strEbimaki",
@@ -196,7 +196,7 @@ export const makiSubcategories = [
     id: "salmonMaki",
     title: "Salmon Maki",
     quantity: "8",
-    imageUrl: "/makiler/salmonmaki.png",
+    imageUrl: "/makiler/salmonmaki.webp",
     porsiya: false,
     description: "strSalmonmaki",
     price: "8"
@@ -207,7 +207,7 @@ export const udonSubcategories = [
     id: "udonVegan",
     title: "Udon Vegan",
     quantity: "1 porsiya", // Burada adet yok, çünkü Udon bir noodle yemeği porsiyon oluyor
-    imageUrl: "/udonlar/udonvegan.png",
+    imageUrl: "/udonlar/udonvegan.webp",
     price: "7",
     mainSeq: 3,
 
@@ -219,7 +219,7 @@ export const udonSubcategories = [
     id: "udonChicken",
     title: "Udon Chicken",
     quantity: "1 porsiya",
-    imageUrl: "/udonlar/udonchicken.png",
+    imageUrl: "/udonlar/udonchicken.webp",
     price: "9",
     mainSeq: 3,
     description: "strUdonchicken",
@@ -230,7 +230,7 @@ export const udonSubcategories = [
     id: "udonShrimp",
     title: "Udon Shrimp",
     quantity: "1 porsiya",
-    imageUrl: "/udonlar/udonshrimp.png",
+    imageUrl: "/udonlar/udonshrimp.webp",
     price: "13",
     mainSeq: 3,
     description: "strUdonshrimp",
@@ -242,7 +242,7 @@ export const udonSubcategories = [
     title: "Udon Salmon",
     quantity: "1 porsiya",
     mainSeq: 3,
-    imageUrl: "/udonlar/udonsalmon.png",
+    imageUrl: "/udonlar/udonsalmon.webp",
     price: "14",
     description: "strUdonsalmon",
     porsiya: true
@@ -253,7 +253,7 @@ export const nigiriSubcategories = [
     id: "ebiNigiri",
     title: "Ebi Nigiri",
     quantity: "1",
-    imageUrl: "/nigiriler/ebinigiri.png",
+    imageUrl: "/nigiriler/ebinigiri.webp",
     porsiya: false,
     description: "strEbinigiri",
     mainSeq: 4,
@@ -264,7 +264,7 @@ export const nigiriSubcategories = [
     id: "grillNigiri",
     title: "Grill Nigiri",
     quantity: "1",
-    imageUrl: "/nigiriler/grillnigiri.png",
+    imageUrl: "/nigiriler/grillnigiri.webp",
     mainSeq: 4,
 
     porsiya: false,
@@ -275,7 +275,7 @@ export const nigiriSubcategories = [
     id: "tunaNigiri",
     title: "Tuna Nigiri",
     quantity: "1",
-    imageUrl: "/nigiriler/tunanigiri.png",
+    imageUrl: "/nigiriler/tunanigiri.webp",
     mainSeq: 4,
 
     porsiya: false,
@@ -288,7 +288,7 @@ export const noodlesSubcategories = [
     id: "riceVegan",
     title: "Rice Vegan",
     quantity: "1 porsiya",
-    imageUrl: "/noodles/ricevegan.png",
+    imageUrl: "/noodles/ricevegan.webp",
     porsiya: true,
     description: "strRicevegan",
     mainSeq: 5,
@@ -299,7 +299,7 @@ export const noodlesSubcategories = [
     id: "riceChicken",
     title: "Rice Chicken",
     quantity: "1 porsiya",
-    imageUrl: "/noodles/ricechicken.png",
+    imageUrl: "/noodles/ricechicken.webp",
     porsiya: true,
     description: "strRicechicken",
     mainSeq: 5,
@@ -310,7 +310,7 @@ export const noodlesSubcategories = [
     id: "riceShrimp",
     title: "Rice Shrimp",
     quantity: "1 porsiya",
-    imageUrl: "/noodles/riceshrimp.png",
+    imageUrl: "/noodles/riceshrimp.webp",
     mainSeq: 5,
 
     porsiya: true,
@@ -321,7 +321,7 @@ export const noodlesSubcategories = [
     id: "riceSalmon",
     title: "Rice Salmon",
     quantity: "1 porsiya",
-    imageUrl: "/noodles/ricesalmon.png",
+    imageUrl: "/noodles/ricesalmon.webp",
     mainSeq: 5,
 
     porsiya: true,
@@ -334,7 +334,7 @@ export const appetizerSubcategories = [
     id: "kartofFri",
     title: "Kartof Fri",
     quantity: "150 gr",
-    imageUrl: "/appetizers/kartoffri.png",
+    imageUrl: "/appetizers/kartoffri.webp",
     mainSeq: 6,
 
     porsiya: true,
@@ -345,7 +345,7 @@ export const appetizerSubcategories = [
     id: "nuggets",
     title: "Nuggets",
     quantity: "6",
-    imageUrl: "/appetizers/nuggets.png",
+    imageUrl: "/appetizers/nuggets.webp",
     mainSeq: 6,
 
     porsiya: false,
@@ -356,7 +356,7 @@ export const appetizerSubcategories = [
     id: "edamame",
     title: "Edamame",
     quantity: "150 gr",
-    imageUrl: "/appetizers/edamame.png",
+    imageUrl: "/appetizers/edamame.webp",
     mainSeq: 6,
 
     porsiya: true,
@@ -367,7 +367,7 @@ export const appetizerSubcategories = [
     id: "cheeseSticks",
     title: "Cheese Sticks",
     quantity: "4",
-    imageUrl: "/appetizers/cheesesticks.png",
+    imageUrl: "/appetizers/cheesesticks.webp",
     mainSeq: 6,
 
     porsiya: false,
@@ -378,7 +378,7 @@ export const appetizerSubcategories = [
     id: "shrimpTempura",
     title: "Shrimp Tempura",
     quantity: "6",
-    imageUrl: "/appetizers/shrimptempura.png",
+    imageUrl: "/appetizers/shrimptempura.webp",
     mainSeq: 6,
 
     porsiya: false,
@@ -391,7 +391,7 @@ export const soupsSubcategories = [
     id: "tomatoSoup",
     title: "Tomato Soup",
     quantity: "1 porsiya",
-    imageUrl: "/soups/tomatosoup.png",
+    imageUrl: "/soups/tomatosoup.webp",
     porsiya: true,
     description: "strTomatosoup",
     mainSeq: 8,
@@ -402,7 +402,7 @@ export const soupsSubcategories = [
     id: "tomYumSoup",
     title: "Tom Yum Soup",
     quantity: "1 porsiya",
-    imageUrl: "/soups/tomyumsoup.png",
+    imageUrl: "/soups/tomyumsoup.webp",
     mainSeq: 8,
 
     porsiya: true,
@@ -413,7 +413,7 @@ export const soupsSubcategories = [
     id: "marciSoup",
     title: "Marci Soup",
     quantity: "1 porsiya",
-    imageUrl: "/soups/marcisoup.png",
+    imageUrl: "/soups/marcisoup.webp",
     mainSeq: 8,
 
     porsiya: true,
@@ -426,7 +426,7 @@ export const drinksSubcategories = [
     id: "sandoraMultivitamin250",
     title: "Sandora Multivitamin 250 ml",
     quantity: "1",
-    imageUrl: "/drinks/sandoramultivitamin250.png",
+    imageUrl: "/drinks/sandoramultivitamin250.webp",
     mainSeq: 9,
 
     porsiya: false,
@@ -437,7 +437,7 @@ export const drinksSubcategories = [
     id: "sandoraMultivitamin1l",
     title: "Sandora Multivitamin 1 l",
     quantity: "1",
-    imageUrl: "/drinks/sandoramultivitamin1l.png",
+    imageUrl: "/drinks/sandoramultivitamin1l.webp",
     mainSeq: 9,
 
     porsiya: false,
@@ -450,7 +450,7 @@ export const drinksSubcategories = [
     quantity: "1",
     mainSeq: 9,
 
-    imageUrl: "/drinks/sirab500.png",
+    imageUrl: "/drinks/sirab500.webp",
     porsiya: false,
     description: "",
     price: "2"
@@ -459,7 +459,7 @@ export const drinksSubcategories = [
     id: "cocaColaZero330",
     title: "Coca Cola Zero 330 ml",
     quantity: "1",
-    imageUrl: "/drinks/cocacolazero330.png",
+    imageUrl: "/drinks/cocacolazero330.webp",
     mainSeq: 9,
 
     porsiya: false,
@@ -470,7 +470,7 @@ export const drinksSubcategories = [
     id: "cocaCola330",
     title: "Coca Cola 330 ml",
     quantity: "1",
-    imageUrl: "/drinks/cocacola330.png",
+    imageUrl: "/drinks/cocacola330.webp",
     mainSeq: 9,
 
     porsiya: false,
@@ -481,7 +481,7 @@ export const drinksSubcategories = [
     id: "fanta330",
     title: "Fanta 330 ml",
     quantity: "1",
-    imageUrl: "/drinks/fanta330.png",
+    imageUrl: "/drinks/fanta330.webp",
     mainSeq: 9,
 
     porsiya: false,
@@ -492,7 +492,7 @@ export const drinksSubcategories = [
     id: "sprite330",
     title: "Sprite 330 ml",
     quantity: "1",
-    imageUrl: "/drinks/sprite330.png",
+    imageUrl: "/drinks/sprite330.webp",
     mainSeq: 9,
 
     porsiya: false,
@@ -503,7 +503,7 @@ export const drinksSubcategories = [
     id: "redBull250",
     title: "Red Bull 250 ml",
     quantity: "1",
-    imageUrl: "/drinks/redbull250.png",
+    imageUrl: "/drinks/redbull250.webp",
     mainSeq: 9,
 
     porsiya: false,
@@ -514,7 +514,7 @@ export const drinksSubcategories = [
     id: "redBull355",
     title: "Red Bull 355 ml",
     quantity: "1",
-    imageUrl: "/drinks/redbull355.png",
+    imageUrl: "/drinks/redbull355.webp",
     mainSeq: 9,
 
     porsiya: false,
@@ -527,7 +527,7 @@ export const drinksSubcategories = [
     quantity: "1",
     mainSeq: 9,
 
-    imageUrl: "/drinks/hell330.png",
+    imageUrl: "/drinks/hell330.webp",
     porsiya: false,
     description: "",
     price: "2"
@@ -538,7 +538,7 @@ export const drinksSubcategories = [
     quantity: "1",
     mainSeq: 9,
 
-    imageUrl: "/drinks/bizon330.png",
+    imageUrl: "/drinks/bizon330.webp",
     porsiya: false,
     description: "",
     price: "2"
@@ -549,7 +549,7 @@ export const drinksSubcategories = [
     quantity: "1",
     mainSeq: 9,
 
-    imageUrl: "/drinks/schweppes250.png",
+    imageUrl: "/drinks/schweppes250.webp",
     porsiya: false,
     description: "",
     price: "2.5"
@@ -560,7 +560,7 @@ export const saladsSubcategories = [
     id: "asianFresh",
     title: "Asian Fresh",
     quantity: "1 porsiya",
-    imageUrl: "/salads/asianfresh.png",
+    imageUrl: "/salads/asianfresh.webp",
     porsiya: true,
     mainSeq: 7,
 
@@ -571,7 +571,7 @@ export const saladsSubcategories = [
     id: "crabSalad",
     title: "Crab",
     quantity: "1 porsiya",
-    imageUrl: "/salads/crab.png",
+    imageUrl: "/salads/crab.webp",
     mainSeq: 7,
 
     porsiya: true,
@@ -582,7 +582,7 @@ export const saladsSubcategories = [
     id: "chukkaSalad",
     title: "Chukka",
     quantity: "1 porsiya",
-    imageUrl: "/salads/chukka.png",
+    imageUrl: "/salads/chukka.webp",
     mainSeq: 7,
 
     porsiya: true,
@@ -593,7 +593,7 @@ export const saladsSubcategories = [
     id: "sezarChicken",
     title: "Sezar Chicken",
     quantity: "1 porsiya",
-    imageUrl: "/salads/sezarchicken.png",
+    imageUrl: "/salads/sezarchicken.webp",
     mainSeq: 7,
 
     porsiya: true,
@@ -604,7 +604,7 @@ export const saladsSubcategories = [
     id: "sezarShrimp",
     title: "Sezar Shrimp",
     quantity: "1 porsiya",
-    imageUrl: "/salads/sezarshrimp.png",
+    imageUrl: "/salads/sezarshrimp.webp",
     mainSeq: 7,
 
     porsiya: true,
@@ -615,7 +615,7 @@ export const saladsSubcategories = [
     id: "sezarSalmon",
     title: "Sezar Salmon",
     quantity: "1 porsiya",
-    imageUrl: "/salads/sezarsalmon.png",
+    imageUrl: "/salads/sezarsalmon.webp",
     mainSeq: 7,
 
     porsiya: true,

@@ -26,7 +26,7 @@ const SideBar = () => {
       return;
     }
 
-    const phoneNumber = "994702027780"; // ✅ kendi numaranı koy
+    const phoneNumber = "+994702027770"; // ✅ kendi numaranı koy
     let message = "Yeni Sifariş:\n\n";
 
     sebet.forEach((item, index) => {
