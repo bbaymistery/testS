@@ -1,6 +1,5 @@
 
 export const extractLanguage = (str) => {
-    console.log({ str });
 
     if (str?.length === 3) {
         const match = str?.match(/^\/([a-z]{2})\/?/i);//burda deyirikki get bizim /ru ile ve ya "/es ile match ol"

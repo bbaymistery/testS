@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './styles.module.scss'
 import generalAllTranslations from '../../../../constants/generalAllTranslations';
+import { useDispatch, useSelector } from 'react-redux';
+const MenuItemCard = ({ imageSrc, title, description, price, ingredients, quantity, language, porsiya = false, item }) => {
+    const { sebet, totalPriceOfSebet } = useSelector(state => state.generalActions);
 
-const MenuItemCard = ({ imageSrc, title, description, price, ingredients, quantity, language, porsiya = false }) => {
-    console.log(description);
+    const dispatch = useDispatch();
+    const addToSebet = () => {
+        dispatch({ type: 'UMUMI_SEBETE_EKLE', data: { product: { ...item, total: 0, quantityItem: 1, } } });
+    };
+    const removeFromSebet = (id) => {
+        dispatch({ type: 'DELETE_FROM_THE_SEBET', data: { id } });
+    };
+    const isItemInSebet = sebet.find(sebetItem => sebetItem.id === item.id && sebetItem.isExist);
 
     return (
         <div className={styles.card}>
@@ -34,10 +43,12 @@ const MenuItemCard = ({ imageSrc, title, description, price, ingredients, quanti
             {description && <p className={styles.description}>{description}</p>}
 
 
-            <button className={styles.addButton}>
-                Səbətə əlavə et
-            </button>
-        </div>
+            {isItemInSebet ? <button className={styles.removeSebet} onClick={() => removeFromSebet(item.id)} >
+                {generalAllTranslations["strSebetdenCixart"]?.[language]}
+            </button> : <button className={styles.addButton} onClick={() => addToSebet()} >
+                {generalAllTranslations["strSebeteElaveEt"]?.[language]}
+            </button>}
+        </div >
     )
 }
 
