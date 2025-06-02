@@ -1,0 +1,48 @@
+@import '../../styles/variables';
+@import '../../styles/fonts';
+
+.page {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    background-color: $--color-light-1;
+
+    @media (max-width: 990px) {
+        padding-top: 30px;
+        margin-left: 0px;
+    }
+
+    @media (max-width: 550px) {
+        padding-top: 0px;
+    }
+
+    .page_section {
+        @media (max-width: 1700px) {
+            margin: 0 40px !important;
+        }
+
+        @media (max-width: 1500px) {
+            margin: 0 50px !important;
+        }
+
+        @media (max-width: 1100px) {
+            margin: 0 60px !important;
+        }
+
+        @media (max-width: 990px) {
+            margin: 0 20px !important;
+        }
+
+        .page_section_container {
+            position: relative;
+            max-width: 1290px !important;
+
+            @media (max-width: 1500px) {
+                padding: 0px !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,69 @@
+@import '../../styles/variables';
+@import '../../styles/fonts';
+
+.page {
+    position: relative;
+    padding-top: 1px;
+    padding-bottom: 80px;
+
+
+
+
+    &_section {
+        @media (max-width: 1200px) {
+            margin: 0 25px !important;
+        }
+
+        @media (max-width: 450px) {
+            margin: 0 15px !important;
+        }
+
+        &_container {
+            position: relative;
+            max-width: 1200px !important;
+            width: 100%;
+
+            .terms_content {
+                width: 100%;
+
+                &_header {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    user-select: none;
+                    font-family: $cursive;
+                    font-weight: 500;
+                    color: rgb(102, 55, 129);
+
+                    .header_icon {
+                        font-size: 20px;
+
+
+                        svg {
+                            width: 100px;
+                        }
+                    }
+
+                    .header_text {
+                        font-size: 40px;
+
+                    }
+                }
+
+                .entry_text {
+                    text-align: center;
+                    margin-top: 2.5rem;
+                    span {
+                        img {
+                            width: 280px !important;
+                        }
+                    }
+                }
+            }
+
+            .terms_div {
+                margin-top: 3rem;
+            }
+        }
+    }
+}

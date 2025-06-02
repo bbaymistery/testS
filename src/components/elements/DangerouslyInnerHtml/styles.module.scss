@@ -1,0 +1,80 @@
+@import '../../../styles/variables';
+
+.dangerous_div {
+    max-width: 990px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: justify;
+
+    p {
+        padding: 4px 0px;
+        font-weight: normal;
+
+    }
+
+    li {
+        list-style: disc;
+        margin-left: 18px;
+        font-size: 16px;
+        padding: 1px 0px ;
+    }
+
+    p {
+        font-size: 20px;
+        padding: 15px 0px;
+    }
+
+    a {
+        color: $primary;
+    }
+
+    h1 {
+        font-size: 32px;
+        @media(max-width:768px) {
+            font-size: 23px;
+        }
+
+    }
+
+    h2 {
+        margin-top: 16px;
+        margin-bottom: 10px;
+        padding-top: 16px;
+        font-weight: 500;
+        font-size: 25px;
+        border-top: 4px solid $--color-light-5;
+
+        @media(max-width:768px) {
+            font-size: 19px;
+            border-top: 2px solid $--color-light-5;
+        }
+    }
+
+
+    h3 {
+        margin-top: 17px;
+        font-weight: 500;
+        font-size: 22px;
+        @media(max-width:768px) {
+            font-size: 19px;
+        }
+    }
+
+    div {
+        margin-top: 20px;
+        padding: 10px;
+        background: $--color-light-3;
+        border-left: 5px solid $primary;
+        margin-bottom: 1rem;
+
+        th,
+        td {
+            padding: 4px 6px;
+        }
+
+        p {
+            padding-bottom: 5px;
+        }
+
+    }
+}
