@@ -6,48 +6,48 @@ export const login = (email, password, router, recaptchaToken, setAlert) => asyn
   const env = await fetchConfig();
   dispatch({ type: LOGIN_REQUEST });
   //
-  // const removedUrl = `${env.apiDomain}/api/v1/corporate-account/login`;
-  // const url = `${env.apiDomain}/api/v1/corporate-account/login?passRecaptcha=true`;
-  const url = `${env.apiDomain}/api/v1/corporate-account/login`;
+  // const  removedUrl = `${env.apiDomain}/api/v1/corporate-account/login`;
+  const url = `${env.apiDomain}/api/v1/corporate-account/login?passRecaptcha=true`;
+  // const url = `${env.apiDomain}/api/v1/corporate-account/login`;
   let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
 
-  if (recaptchaToken) {
-    let raw = JSON.stringify({ email, password, "recaptchaToken": recaptchaToken });
-    let requestOptions = { method: "POST", headers: myHeaders, body: raw, redirect: "follow", };
+  // if (recaptchaToken) {
+  let raw = JSON.stringify({ email, password, "recaptchaToken": recaptchaToken });
+  let requestOptions = { method: "POST", headers: myHeaders, body: raw, redirect: "follow", };
 
-    fetch(url, requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        console.log({ result });
+  fetch(url, requestOptions)
+    .then((response) => response.json())
+    .then((result) => {
+      console.log({ result });
 
-        if (result.status === 200) {
-          localStorage.setItem("user", JSON.stringify(result.data));
-          setCookie("user-id", result.data["id"], 7);
-          setCookie("x-auth-token", result.data["x-auth-token"], 7);
+      if (result.status === 200) {
+        localStorage.setItem("user", JSON.stringify(result.data));
+        setCookie("user-id", result.data["id"], 7);
+        setCookie("x-auth-token", result.data["x-auth-token"], 7);
 
-          // Dispatch the action
-          dispatch({ type: LOGIN_SUCCESS, payload: result.data });
+        // Dispatch the action
+        dispatch({ type: LOGIN_SUCCESS, payload: result.data });
 
-          //in order to get user again after login
-          router.push("/new-booking");
+        //in order to get user again after login
+        router.push("/new-booking");
 
-          let { channelId, accountId } = result.data
-          localStorage.setItem("channelId", channelId);
-          localStorage.setItem("accountId", accountId);
-          dispatch({ type: 'SET_ACCOUNT_ID', data: { channelId, accountId } })
+        let { channelId, accountId } = result.data
+        localStorage.setItem("channelId", channelId);
+        localStorage.setItem("accountId", accountId);
+        dispatch({ type: 'SET_ACCOUNT_ID', data: { channelId, accountId } })
 
-        } else {
-          dispatch({ type: LOGIN_FAIL, payload: result.error.global[0] });
-          setAlert({ alert: true, close: true, message: result?.error?.global?.[0] || "Login failed", error: true, });
-        }
-      })
-      .catch((error) => { dispatch({ type: LOGIN_FAIL, payload: error }); });
-  } else {
-    setAlert({ alert: true, close: true, message: "Select reCaptcha", error: true, });
-    setTimeout(() => { dispatch({ type: LOGIN_FAIL, payload: "Select reCaptcha" }); }, 1300);
-  }
+      } else {
+        dispatch({ type: LOGIN_FAIL, payload: result.error.global[0] });
+        setAlert({ alert: true, close: true, message: result?.error?.global?.[0] || "Login failed", error: true, });
+      }
+    })
+    .catch((error) => { dispatch({ type: LOGIN_FAIL, payload: error }); });
+  // } else {
+  //   setAlert({ alert: true, close: true, message: "Select reCaptcha", error: true, });
+  //   setTimeout(() => { dispatch({ type: LOGIN_FAIL, payload: "Select reCaptcha" }); }, 1300);
+  // }
 };
 
 export const loaduserIfExist = (id, token, router) => async (dispatch) => {

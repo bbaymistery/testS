@@ -59,7 +59,7 @@ const Login = () => {
             )}
             <div className={`${styles.agency_section}`}>
                 <div className={`${styles.agency_section_container}`}>
-                    <div className={styles.login_box}>
+                    <div style={{width:'344px'}} className={styles.login_box}>
                         <div className={styles.login_box_header}>
                             {/*  eslint-disable-next-line @next/next/no-img-element */}
                             <img src={'/logos/logo.webp'} alt="Agency Apl Transfers Logo" />
@@ -74,7 +74,7 @@ const Login = () => {
                             </div>
 
                             <div className={styles.recaptcha}>
-                                <Recaptcha onVerify={handleRecaptchaVerify} />
+                                {/* <Recaptcha onVerify={handleRecaptchaVerify} /> */}
                             </div>
                             <button onClick={handleSend} disabled={loading} className={`btn btn_primary flex-center  ${loading ? "no_pointer" : ""}`}   >
                                 {loading ? <CircleLoading /> : "Sign In"}
