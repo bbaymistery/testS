@@ -12,7 +12,7 @@ const Layout = ({ children, title = "APL- Agency  | APL Transfers | Turkey Trans
         <title>{title}</title>
         <meta name="keywords" content={keywords} />
         <meta name="description" content={description} />  
-         <meta name="robots" content="index,follow" />
+         <meta name="robots" content="noindex,nofollow" />
       </Head>
       {loggedIn && <TopBar pageUrl={pageUrl} />}
       {loggedIn && <Sidebar pageUrl={pageUrl} />}

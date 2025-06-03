@@ -28,6 +28,7 @@ const SelectedCardItem = ({
 
     return (
         <div
+            // eslint-disable-next-line react/no-unknown-property
             dataid={index === 0 ? "first_car" : ""}
             className={`${styles.card_item} ${selected ? styles.selectedCard : ""}`}
         >
