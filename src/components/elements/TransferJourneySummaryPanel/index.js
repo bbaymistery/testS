@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { quotationImagesObj } from '../../../constants/quotationImages'
+import { quotationImagesObjWebp } from '../../../constants/quotationImages'
 import styles from "./styles.module.scss"
 const TransferJourneySummaryPanel = (props) => {
     let { index, quotation, selectedPickupPoints, selectedDropoffPoints, splitedDate, splitedHour, splitedMinute, isTaxiDeal = false,env } = props
@@ -17,7 +17,7 @@ const TransferJourneySummaryPanel = (props) => {
             <div className={styles.content}>
                 <h3>{index === 0 ? "Booking Details" : "Return Journey Booking Details"}</h3>
                 <div className={`${styles.journey_card}`}>
-                    <div className={`${styles.img_div} ${quotation.carId === 6 || quotation.carId === 5 ? styles.cardIdSix : ""} ${quotation.carId === 4 ? styles.carIdFour : ""}`} style={{ backgroundImage: `url(${env.apiDomain}${quotationImagesObj[quotation?.carId]?.image})` }}>
+                    <div className={`${styles.img_div} ${quotation.carId === 6 || quotation.carId === 5 ? styles.cardIdSix : ""} ${quotation.carId === 4 ? styles.carIdFour : ""}`} style={{ backgroundImage: `url(${env.apiDomain}${quotationImagesObjWebp[quotation?.carId]?.image})` }}>
                         <div className={styles.stars}>
                             <i className="fa-solid fa-star"></i>
                             <i className="fa-solid fa-star"></i>

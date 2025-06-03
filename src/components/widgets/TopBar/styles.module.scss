@@ -59,6 +59,7 @@
 
                         img {
                             width: 30px;
+
                             @media(max-width:450px) {
                                 width: 25px;
                                 height: 25px;
@@ -76,8 +77,10 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
                 picture {
                     display: flex;
+
                     img {
                         margin-bottom: 0rem;
                         width: 22px;
@@ -91,6 +94,7 @@
                 margin-left: -12px;
                 color: white;
                 font-size: 18px;
+
                 &:hover {
                     transform: scale(1.1);
                     transition: $tr-ease;
@@ -155,6 +159,23 @@
         }
 
         .right {
+            display: flex;
+            align-items: center;
+            .currency_dropdown {
+                cursor: pointer;
+                position: relative;
+                user-select: none;
+                font-size: 13px;
+                font-weight: 500;
+                width: 38px;
+                text-align: center;
+
+                .text {
+                    background-color: $--color-light-5;
+                    padding: 0px 7px;
+                }
+
+            }
 
 
             .logout_button {
@@ -165,7 +186,7 @@
                 font-weight: bold;
 
                 span {
-                    font-size: 18px;
+                    font-size: 17px;
                 }
 
                 i {

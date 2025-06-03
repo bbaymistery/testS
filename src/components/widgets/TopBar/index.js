@@ -1,16 +1,21 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import styles from "./styles.module.scss";
-import  { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ToggleSideBar } from "../../../store/showFieldReducer/showFieldSelectors";
 import { SET_ACTIVELINK_ID, TOGGLE_SIDE_BAR } from "../../../store/showFieldReducer/showFieldTypes";
 import { useRouter } from "next/router";
 import { logoutuser } from "../../../store/authReducer/authAction";
 import { getWindowDimensions } from "../../../helpers/windowDimension";
+import OutsideClickAlert from "../../elements/OutsideClickAlert";
+import DropDownAllCurrencies from "../../elements/DropDownAllCurrencies";
 
 const TopBar = ({ pageUrl }) => {
   const router = useRouter();
   const dispatch = useDispatch();
+
+  const { params: { selectedCurrency } } = useSelector(state => state.pickUpDropOffActions)
+
   const selectToggleSideBar = useSelector(ToggleSideBar);
 
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
@@ -18,13 +23,36 @@ const TopBar = ({ pageUrl }) => {
 
   const isSpecialPage = ['/account-users', '/my-bookings', '/quotation', '/transfer-details', "/payment"].includes(pageUrl);
   const isMobile = windowDimensions.width < 990;
+  const [languageStatus, setLanguageStatus] = useState(false)
+  const [currencyStatus, setCurrencyStatus] = useState(false)
+  const isCurrencyDisbaled = router.pathname === '/reservations-document' || router.pathname === "/transfer-details" || router.pathname === "/payment-details"
 
   const toggleSideBar = () => {
     menuRef.current.classList.toggle(styles.menuActive);
     dispatch({ type: TOGGLE_SIDE_BAR, payload: !selectToggleSideBar });
   };
 
+  const setOpenCurrencyDropDown = () => {
+    if (isCurrencyDisbaled) return
+    setLanguageStatus(false)
+    setCurrencyStatus(!currencyStatus)
+  }
+
+  const handleCurrency = (params = {}) => {
+    let { e, text, currencyId } = params
+    dispatch({ type: "SET_CURRENCY", data: { currencyId: +currencyId, text } })
+    setCurrencyStatus(false)
+  }
+
+  //for language dropdown
+  const outsideClickDropDown = useCallback((e) => {
+    setLanguageStatus(false);
+    setCurrencyStatus(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [languageStatus, currencyStatus]);
+
   const logout = () => dispatch(logoutuser(router));
+
   const changeActiveLink = () => dispatch({ type: SET_ACTIVELINK_ID, payload: 1 });
 
   useEffect(() => {
@@ -50,7 +78,7 @@ const TopBar = ({ pageUrl }) => {
   const renderFullLogo = (width = 290) => (
     // <Image src={logoImage1} alt="Agency Apl Transfers Logo" width={width} height={55} priority />
     //eslint-disable-next-line @next/next/no-img-element 
-    <img src={'/logos/logo.webp'} alt="Agency Apl Transfers Logo" style={{ width: 240, height: '100%',}} />
+    <img src={'/logos/logo.webp'} alt="Agency Apl Transfers Logo" style={{ width: 240, height: '100%', }} />
 
   );
 
@@ -128,6 +156,25 @@ const TopBar = ({ pageUrl }) => {
 
         {(!isMobile || selectToggleSideBar) && (
           <div className={styles.right}>
+            <div className={`${styles.currency_dropdown}`} >
+              <div
+                className={`${styles.text}`}
+                onClick={() => setOpenCurrencyDropDown()}
+                data-name="currency"
+                style={{
+                  backgroundColor: isCurrencyDisbaled ? '#f0f0f0' : undefined,
+                  cursor: isCurrencyDisbaled ? 'default' : 'pointer'
+                }}
+              >
+                {selectedCurrency.currency}
+              </div>
+
+              {currencyStatus ?
+                <OutsideClickAlert onOutsideClick={() => outsideClickDropDown()}>
+
+                  <DropDownAllCurrencies currencyStatus={currencyStatus} handleCurrency={handleCurrency} />
+                </OutsideClickAlert> : <></>}
+            </div>
             <button className={`${styles.logout_button} btn`} onClick={logout}>
               <span>Logout</span>
               <i className="fa-solid fa-chevron-down"></i>

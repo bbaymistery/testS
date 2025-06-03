@@ -1,0 +1,540 @@
+@import '../../../styles/variables';
+
+.hero_section_container {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .points_content {
+
+
+
+
+
+        .main_search {
+            padding: 20px 15px 20px 15px;
+            background-color: #fff;
+            border-radius: 12px;
+            margin-top: 20px;
+            position: relative;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+
+            .main_title {
+                padding-bottom: 1.5rem;
+                padding-left: 3px;
+                font-size: 32px;
+            }
+
+
+            // radio button component
+            .radio_button_div {
+                user-select: none;
+                cursor: pointer;
+                display: block;
+
+                [type="radio"]:checked,
+                [type="radio"]:not(:checked) {
+                    position: absolute;
+                    left: -9999px;
+                }
+
+                [type="radio"]:checked+label,
+                [type="radio"]:not(:checked)+label {
+                    position: relative;
+                    padding-left: 28px;
+                    cursor: pointer;
+                    line-height: 20px;
+                    display: inline-block;
+                    color: $gray;
+                    text-transform: capitalize;
+                }
+
+                [type="radio"]:checked+label:before,
+                [type="radio"]:not(:checked)+label:before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 16px;
+                    height: 16px;
+                    border: 1px solid $--color-light-4;
+                    border-radius: 100%;
+                    background: #fff;
+                }
+
+                [type="radio"]:checked+label:after,
+                [type="radio"]:not(:checked)+label:after {
+                    content: '';
+                    width: 10px;
+                    height: 10px;
+                    background: $--color-accent-1;
+                    position: absolute;
+                    top: 3px;
+                    left: 3px;
+                    border-radius: 100%;
+                    -webkit-transition: all 0.2s ease;
+                    transition: all 0.2s ease;
+                }
+
+                [type="radio"]:not(:checked)+label:after {
+                    opacity: 0;
+                    -webkit-transform: scale(0);
+                    transform: scale(0);
+                }
+
+                [type="radio"]:checked+label:after {
+                    opacity: 1;
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+            }
+
+            .return_journey_title {
+                margin: 24px 0px 24px 4px !important;
+                font-size: 24px;
+                text-transform: capitalize;
+            }
+
+            .tr_journey_title {
+                margin: 9px 0px 24px 4px !important;
+                font-size: 24px;
+                text-transform: capitalize;
+            }
+
+            .points_wrapper {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 300px)) repeat(2, minmax(0, 205px)) auto;
+                gap: 1rem;
+                width: 100%;
+
+                @media (max-width: 1400px) {
+                    grid-template-columns: 1fr 1fr; // 2 columns on smaller screens
+                    grid-template-areas: "pickup dropoff" "date time" "button button";
+                    gap: 1.5rem;
+
+                    // Assign grid areas to child elements
+                    .main_search_wrapper:nth-child(1) {
+                        grid-area: pickup;
+                    }
+
+                    // First pickup input
+                    .main_search_wrapper:nth-child(2) {
+                        grid-area: dropoff;
+                    }
+
+                    // Second dropoff input
+                    .main_search_wrapper:nth-child(3) {
+                        grid-area: date;
+                    }
+
+                    // Date input
+                    .main_search_wrapper:nth-child(4) {
+                        grid-area: time;
+                    }
+
+                    // Time select
+                    .btn_div {
+                        grid-area: button;
+                    }
+                }
+
+                // Quotation button
+                // For screens <= 1000px: each column takes full width (1fr)
+                @media (max-width: 1000px) {
+                    grid-template-columns: 1fr; // Single column layout
+                    grid-template-areas: "pickup" "dropoff" "date" "time" "button";
+                }
+
+                .main_search_wrapper {
+                    display: flex;
+                    align-items: flex-start;
+
+                    .icon_wrapper {
+                        width: 50px;
+                        height: 50px;
+                        border: 1px solid $--color-light-6;
+                        border-radius: 12px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: $gray;
+                    }
+
+                    //pick up drop of input
+                    .search_menu {
+                        position: relative;
+                        user-select: none;
+                        margin-left: 8px;
+                        width: 100%;
+
+                        p {
+                            font-size: 15px;
+                            font-weight: 500;
+                            line-height: 1.6;
+                            color: $--color-dark-1;
+                            text-transform: capitalize;
+                        }
+
+                        .input_div {
+                            position: relative;
+
+                            .popup_header[f="false"] {
+                                display: none;
+                            }
+
+                            .popup_header[f="true"] {
+                                display: flex;
+                                align-items: center;
+                                padding-top: 12px;
+                                padding-bottom: 10px;
+                                padding-left: 3px;
+
+                                i {
+                                    margin-right: 11px;
+                                    font-size: 20px;
+                                    cursor: pointer;
+                                    z-index: 999999999999999;
+                                }
+
+                                p {
+                                    font-size: 18px;
+                                    font-weight: 500;
+                                    color: #000;
+                                }
+                            }
+
+
+                            .input_delete_field_icon[popupp="false"][direction="false"] {
+                                top: 5px;
+                                font-size: 13px;
+                                color: red;
+                                right: 10px;
+                                position: absolute;
+                                display: inline;
+                                width: 14px;
+                                cursor: pointer;
+
+                                &:hover {
+                                    color: darken(red, 10%);
+                                }
+                            }
+
+                            .input_delete_field_icon[popupp="true"][direction="false"] {
+                                position: absolute;
+                                right: 23px !important;
+                                color: red;
+                                font-size: 12px;
+                                top: 82px;
+                                cursor: pointer;
+                            }
+                         
+
+                            input {
+                                border: 0;
+                                outline: none;
+                                width: 100%;
+                                font-size: 15px;
+                                line-height: 1.4;
+                                color: $gray;
+
+                                border-bottom: 1px solid $--color-light-6;
+
+
+                                &::placeholder {
+                                    text-transform: capitalize;
+                                    color: $gray;
+                                    font-weight: 300;
+                                }
+                            }
+
+                            input[f="true"] {
+                                border: 1px solid #efefef;
+                                border-radius: 4px;
+                                padding: 10px;
+                            }
+
+                            input[f="false"] {
+                                padding: 1px 2px;
+                            }
+
+
+                            .loading_div[direction="false"] {
+                                position: absolute;
+                                top: -36px;
+                                right: 72px;
+
+                                @media(max-width:1300px) {
+                                    right: 72px;
+                                }
+
+                                @media(max-width:1000px) {
+                                    right: 80px;
+                                }
+                            }
+
+                            .loading_div[popupp="true"][direction="false"] {
+                                top: 42px !important;
+                                right: 92px !important;
+                                position: absolute;
+                            }
+
+
+                            input[f="false"].error_input {
+                                border-bottom: 1px solid red !important;
+                            }
+
+
+                        }
+
+                        .add_point_div {
+                            display: flex;
+                            align-items: center;
+                            padding: 7px 7px;
+                            transition: .5s linear;
+                            cursor: pointer;
+
+                            .add_point_icon,
+                            .add_point_text {
+                                font-size: 14px;
+                                color: $gray;
+                            }
+
+                            .add_point_icon {
+                                margin-right: 0.6rem;
+                            }
+                        }
+                    }
+
+
+                    .book_input_date {
+                        position: relative;
+
+                        .date_div {
+                            width: 100%;
+
+                            input[type="date"] {
+                                position: relative;
+                                text-align: left;
+                                min-width: 100%;
+                                max-width: 100%;
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                border-radius: 0;
+                                min-height: 28px !important;
+                                height: 28px !important;
+                                border: 0;
+                                outline: none;
+                                outline-offset: -2px;
+                                background-color: rgb(255, 255, 255);
+                                font-size: 15px;
+
+                                border-bottom: 1px solid $--color-light-6;
+
+                                &::before,
+                                &::after {
+                                    content: '';
+                                    position: absolute;
+                                    height: 50%;
+                                    border-color: transparent transparent transparent rgba($gray, 0.5);
+                                    border-style: solid;
+                                    border-width: 1px;
+                                    transform: skewX(-15deg);
+                                    top: 6px;
+
+                                    @media (max-width: 768px) {
+                                        display: none !important;
+                                    }
+                                }
+
+                                &::before {
+                                    left: 23px;
+                                }
+
+                                &::after {
+                                    left: 52px;
+                                }
+
+                                // /default calendar isaresi 
+                                &::-webkit-calendar-picker-indicator,
+                                &::-webkit-inner-spin-button,
+                                &::-webkit-clear-button {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    right: 0;
+                                    bottom: 0;
+                                    width: auto;
+                                    height: auto;
+                                    color: transparent;
+                                    background: transparent;
+                                    user-select: none;
+                                    z-index: 1;
+                                }
+
+                                &::-webkit-date-and-time-value {
+                                    text-align: left;
+                                    display: flex;
+                                    align-items: center;
+                                    height: 100%;
+                                }
+
+                                //calendarin icindeki regemlerin rengi
+                                &::-webkit-datetime-edit,
+                                &::-webkit-inner-spin-button,
+                                &::-webkit-clear-button {
+                                    color: white;
+                                    position: relative;
+                                    left: 0;
+                                    text-align: left;
+                                    font-size: 15px;
+                                }
+
+                                &::-webkit-datetime-edit-year-field,
+                                &::-webkit-datetime-edit-month-field,
+                                &::-webkit-datetime-edit-day-field {
+                                    position: absolute !important;
+                                    color: $--color-light-8;
+                                    padding: 0;
+                                }
+
+                                &::-webkit-datetime-edit-year-field {
+                                    left: 54px;
+                                    padding: 0 7px;
+                                }
+
+                                &::-webkit-datetime-edit-month-field {
+                                    left: 22px;
+                                    padding: 0 7px;
+                                }
+
+                                &::-webkit-datetime-edit-day-field {
+                                    left: 0;
+                                }
+
+                        
+                            }
+                        }
+                    }
+
+                    .hours_minutes {
+                        display: flex;
+                        flex-direction: column;
+
+                        .select_time_div {
+                            display: flex;
+                            gap: 8px;
+
+                            .booking_form_hour_minute_wrapper {
+                                width: 100%;
+                                position: relative;
+
+                                @media(max-width:1000px) {
+                                    max-width: 100%;
+                                }
+
+                                select {
+                                    border: none;
+                                    width: 100%;
+                                    font-size: 15px;
+                                    color: $--color-light-8;
+
+                                    // -webkit-appearance: menulist;
+                                    border-bottom: 1px solid $--color-light-6;
+
+
+                                    &:focus {
+                                        outline: 0px !important;
+                                    }
+                                }
+
+
+
+                                .left {
+                                    position: absolute;
+                                    right: 35px !important;
+                                    font-size: 13px;
+                                    color: $gray;
+                                    z-index: 0;
+                                    pointer-events: none;
+
+
+                                    @media(max-width:1000px) {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
+                }
+
+                .btn_div {
+                    position: relative;
+
+                    @media (max-width: 1400px) {
+                        grid-area: button;
+                        max-width: 200px; // Limit the button's width
+                        justify-self: flex-end; // Centers the button horizontally within its grid cell
+                    }
+
+                    @media (max-width: 1000px) {
+                        max-width: 100%; // Limit the button's width
+                        width: 100%;
+                    }
+
+                    button {
+                        width: 100%;
+
+                        i {
+                            display: none;
+
+                            @media(max-width:1000px) {
+                                display: block;
+                            }
+                        }
+                    }
+
+                    .waveloadingdiv {
+                        width: 100%;
+                        height: 50px;
+                        border-radius: 4px;
+                        border: 1px solid $--color-accent-1;
+                        cursor: not-allowed;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        @media(max-width:1000px) {
+                            min-width: 100%;
+                        }
+                    }
+                }
+            }
+
+            .errorBookedMessage {
+                color: red;
+                padding: 5px 15px;
+            }
+        }
+    }
+}
+
+
+
+@media only screen and (max-width: 1000px) {
+    .search-input-container[f="true"] {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        overflow: auto;
+        background-color: white;
+        z-index: 1000;
+        padding: 12px !important;
+        overflow: hidden;
+
+    }
+}

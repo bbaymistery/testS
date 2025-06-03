@@ -1,21 +1,14 @@
 import { useRouter } from 'next/router';
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import styles from "./styles.module.scss"
 const SelectedPointsOnHomePage = (params = {}) => {
     //hasOneItem related to taxi deals
-    let { points, index, destination, getQuotations = () => { }, hasOneItem = false, env } = params
+    let { points, index, destination, getQuotations = () => { }, env } = params
     const dispatch = useDispatch()
     const router = useRouter()
     const state = useSelector((state) => state.pickUpDropOffActions);
-    let { reservations, appData } = state
-    const imageObjects = appData?.pointTypeCategories?.reduce(
-        (obj, item) => ({
-            ...obj,
-            [item.id]: item.image,
-        }),
-        {}
-    );
+    let { params: { direction, }, reservations } = state
+
 
     const handleDelete = (params = {}) => {
         let { currentIndexOfDeletedItem } = params
@@ -26,23 +19,22 @@ const SelectedPointsOnHomePage = (params = {}) => {
 
     }
 
-    return (<div className={`${styles.selected_points} ${hasOneItem ? styles.hasoneitem_taxideals : ""}`}>
+    return (<div className={`${styles.selected_points} `}>
         {points.map((point, index) => {
+            const addressText = point.address.includes(point.postcode) ? `${point.address}` : `${point.address} ${point.postcode ? point.postcode : ""}`
 
             return (
-                <div key={index} className={styles.point_div} title={point.address}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    {imageObjects && <img className={styles.point_image} src={`${env.apiDomain}${imageObjects[point?.pcatId]}`} alt={point.address} />}
-                    <input type="text" readOnly={true} name="pickup-address" placeholder={point.address} />
-                    {!hasOneItem ?
-                        // eslint-disable-next-line react/no-unknown-property
-                        <span hideme={String(router.pathname === "/quotation-result")} className={`${styles.icons} ${styles.icons_delete_span}`} onClick={(e) => handleDelete({ currentIndexOfDeletedItem: index, v: e.target })}>
-                            <i className="fa fa-times sef-loc-delete" aria-hidden="true"  ></i>
-                        </span> : <></>}
-                    {/* eslint-disable-next-line react/no-unknown-property */}
-                    {<span hideme={String(router.pathname === "/quotation-result")} className={`${styles.icons_check_span} ${styles.icons}`}>
+                <div key={index} className={styles.point_div} direction={String(direction === "rtl")} title={addressText}>
+                    <input type="text" readOnly={true} className={direction} name="pickup-address" placeholder={addressText} />
+
+                    {/*  eslint-disable-next-line react/no-unknown-property */}
+                    <span hideme={String(router.pathname === "/quotation-result")} className={`${styles.icons} ${styles.icons_delete_span}`} onClick={(e) => handleDelete({ currentIndexOfDeletedItem: index, v: e.target })}>
+                        <i className="fa fa-times sef-loc-delete" aria-hidden="true"  ></i>
+                    </span> 
+                    {/*  eslint-disable-next-line react/no-unknown-property */}
+                    <span hideme={String(router.pathname === "/quotation-result")} className={`${styles.icons_check_span} ${styles.icons}`}>
                         <i className={`fa-solid fa-check ${styles.check_button}`} aria-hidden="true"></i>
-                    </span>}
+                    </span>
 
                 </div>)
         })}

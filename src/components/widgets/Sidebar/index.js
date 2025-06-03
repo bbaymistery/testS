@@ -24,7 +24,7 @@ const Sidebar = ({ pageUrl }) => {
     }
   }, [pageUrl, dispatch, windowDimensions.width]);
 
-  const isSpecialPage = pageUrl === '/my-bookings' || pageUrl === "/account-users" || pageUrl === "/quotation" || pageUrl === "/transfer-details" || pageUrl === "/payment";
+  const isSpecialPage = pageUrl === '/my-bookings' || pageUrl === "/account-users" || pageUrl === "/quotation-results" || pageUrl === "/transfer-details" || pageUrl === "/payment";
   const isMobile = windowDimensions.width < 990;
 
 

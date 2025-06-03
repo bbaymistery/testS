@@ -1,27 +1,22 @@
+import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Layout from "../../components/layouts/Layout";
+import { useDispatch } from "react-redux";
 import Steps from "../../components/elements/Steps";
+import Layout from "../../components/layouts/Layout";
+import { parseCookies } from "../../helpers/cokieesFunc";
 import { SET_ACTIVELINK_ID } from "../../store/showFieldReducer/showFieldTypes";
 import styles from "./styles.module.scss";
-import { useRouter } from "next/router";
-import { parseCookies } from "../../helpers/cokieesFunc";
-
-
-
+import Hero from "../../components/widgets/Hero";
 
 const NewBooking = (props) => {
   let { data, env } = props
   const dispatch = useDispatch()
-  //when we go quotation page then go back In that case we should check
-  //if we have points or not.
-  //According to this we will show add extrapoint or not
-
   useEffect(() => {
     dispatch({ type: SET_ACTIVELINK_ID, payload: 1 });
     localStorage.setItem("activeLinkId", JSON.stringify(1))
   }, [dispatch])
   const router = useRouter()
+
   return (
     <Layout loggedIn={data} pageUrl={router.pathname} title="APL- Agency New Booking Page | Airport Pickups London" >
       <div className={`page ${styles.page}`}>
@@ -30,6 +25,7 @@ const NewBooking = (props) => {
             <div className={"steps_div"}>
               <Steps oneIspending={true} />
             </div>
+            <Hero env={env} />
           </div>
         </div>
       </div>

@@ -9,6 +9,11 @@
     flex-direction: column;
     overflow-y: hidden;
     background-color: $--color-light-1;
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+    min-height: 100vh;
+    justify-content: center;
 
     @media (max-width: 990px) {
         padding-top: 30px;

@@ -1,0 +1,49 @@
+    @import '../../../styles/variables';
+
+    .all_currrencies {
+        position: absolute;
+        background-color: white;
+        top: 50px;
+        left: 0px;
+        border-radius: 5px;
+        padding: 11px;
+        align-items: center;
+        transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        visibility: hidden;
+        opacity: 0;
+        left: -80px;
+        box-shadow: $box-shadow-3;
+        user-select: none;
+
+
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 20px;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            transform: rotate(45deg);
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+            left: 90px;
+        }
+
+        .content {
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: $--color-light-5  ;
+                transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            }
+        }
+
+
+    }

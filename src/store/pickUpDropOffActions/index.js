@@ -31,6 +31,7 @@ import { currentDateForJourney } from "../../helpers/getDates";
 import RESELECT_POINTS_FROM_STORE from "./RESELECT_POINTS_FROM_STORE";
 import GET_APP_DATA from "./GET_APP_DATA";
 import SET_ACCOUNT_ID from "./SET_ACCOUNT_ID";
+import SET_CURRENCY from "./SET_CURRENCY";
 
 
 
@@ -70,8 +71,8 @@ const INITIAL_STATE = {
     journeyType: "0",
     sessionToken: "",
     language: "en",
-    direction:"ltr",
-    langIndex:0,
+    direction: "ltr",
+    langIndex: 0,
     modalInfo: false,//when we click carInfo icon pops up modal,  //!check again if u didnt use eliminate this
     quotations: [{}],//we use it when we collect quotations
     postCodeAdresses: [],//when we select pcatId5 we need to add adresses
@@ -87,6 +88,9 @@ export const pickUpDropOffActions = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'SWITCH_JOURNEY': {
       return SWITCH_JOURNEY({ state, action })
+    }
+    case 'SET_CURRENCY': {
+      return SET_CURRENCY({ state, action })
     }
     case "SET_JOURNEY_DATETIME": {
       return SET_JOURNEY_DATETIME({ state, action })
