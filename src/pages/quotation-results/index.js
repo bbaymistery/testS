@@ -78,8 +78,7 @@ const Quotation = (props) => {
             return
         }
 
-        // router.replace("/transfer-details");
-        // router.push(`${language === 'en' ? "/transfer-details" : `${language}/transfer-details`}`)
+        router.push(`${language === 'en' ? "/transfer-details" : `${language}/transfer-details`}`)
 
 
     };

@@ -1,18 +1,21 @@
-import React from "react";
 import pointsStyle from "./pointsStyle.module.scss";
-const PickUpPoints = ({ selectedPickupPoints, }) => {
+import { useSelector } from 'react-redux'
+
+const PickUpPoints = ({ selectedPickupPoints, showIcon, }) => {
+  const state = useSelector(state => state.pickUpDropOffActions)
+  let {  appData } = state
+  console.log({ appData });
+
   return (
-    <div className={pointsStyle.details}>
+    <div className={`${pointsStyle.details} ${showIcon ? pointsStyle.detailsShowIcon : ""}`}>
       {selectedPickupPoints?.map((point, i) => {
-                const addressText = point.address.includes(point.postcode) ? `${point.address}` : `${point.address} ${point.postcode}`
-        
         return (
           <div className={pointsStyle.details_bottom_container} key={i}>
-            <p className={pointsStyle.point_adress} >{i + 1}.{addressText}</p>
+            <p className={pointsStyle.point_adress}>{i + 1}.{point?.address?.includes(point?.postcode) ? `${point?.address}` : `${point?.address} ${point?.postcode ? point?.postcode : ""}`}</p>
             {/*  //! for flight  */}
             {point?.flightDetails?.flightNumber && (
-              
-              <div className={pointsStyle.details_bottom_description} >
+
+              <div className={pointsStyle.details_bottom_description}>
                 <i className="fa-solid fa-circle-dot"></i>
                 <div className={pointsStyle.bottom_main_desc}>
                   <span>Flight No.</span>
@@ -23,11 +26,13 @@ const PickUpPoints = ({ selectedPickupPoints, }) => {
 
             {/* check language_words */}
             {point?.flightDetails?.waitingPickupTime >= 0 && (
-              <div className={pointsStyle.details_bottom_description} >
+              <div className={`${pointsStyle.details_bottom_description} ${pointsStyle.details_bottom_description_2}`} >
                 <i className="fa-solid fa-circle-dot"></i>
                 <div className={pointsStyle.bottom_main_desc}>
-                  <span>Driver Meeting Time:</span>
-                  <span className={pointsStyle.flight_has_landed}>{`${point?.flightDetails?.waitingPickupTime} mins after flight  has landed `}</span>
+                  <span>{"Requested Pickup Time"}:</span>
+                  <span className={pointsStyle.flight_has_landed}>
+                    {appData.words["strMinutesAfterFlightHasLanded"] || "{{}} minutes after Flight has landed".replace("{{}}", point?.flightDetails?.waitingPickupTime)}
+                  </span>
                 </div>
               </div>
             )}
@@ -36,7 +41,7 @@ const PickUpPoints = ({ selectedPickupPoints, }) => {
               <div className={pointsStyle.details_bottom_description} >
                 <i className="fa-solid fa-circle-dot"></i>
                 <div className={pointsStyle.bottom_main_desc}>
-                  <span>postcode address</span>
+                  <span>{"Postcode Address"}</span>{" "}
                   <span>{point?.postCodeDetails?.postCodeAddress}</span>
                 </div>
               </div>
@@ -47,8 +52,8 @@ const PickUpPoints = ({ selectedPickupPoints, }) => {
               <div className={pointsStyle.details_bottom_description} >
                 <i className="fa-solid fa-circle-dot"></i>
                 <div className={pointsStyle.bottom_main_desc}>
-                  <span>cruise name</span>
-                   <span>{point?.cruiseNumber}</span>
+                  <span>{"Cruise Name"}</span>
+                  <span>{point?.cruiseNumber}</span>
                 </div>
               </div>
             )}
@@ -67,7 +72,7 @@ const PickUpPoints = ({ selectedPickupPoints, }) => {
               <div className={pointsStyle.details_bottom_description} >
                 <i className="fa-solid fa-circle-dot"></i>
                 <div className={pointsStyle.bottom_main_desc}>
-                  <span>room number</span> <span>{point?.roomNumber}</span>
+                  <span>{"Room Number"}</span> <span>{point?.roomNumber}</span>
                 </div>
               </div>
             )}

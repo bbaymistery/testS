@@ -1,9 +1,7 @@
-@import '../../styles/variables';
-@import '../../styles/_fonts';
+@import '../../../../styles/variables';
 $checkbox-size: 20px;
 $checkbox-border: #cecece;
-$checkbox-selected:$blue-1; // Primary colour
-
+$checkbox-selected: $--color-accent-1; // Primary colour
 .form_checkbox {
     position: relative;
     display: block;
@@ -16,7 +14,6 @@ $checkbox-selected:$blue-1; // Primary colour
         opacity: 0;
         user-select: none;
         cursor: pointer;
-        font-family: $font-jost;
 
         // Text
         &+label {
@@ -105,11 +102,90 @@ $checkbox-selected:$blue-1; // Primary colour
     }
 
     .primary_text {
-        color: $primary !important;
+        color: $--color-accent-1 !important;
 
     }
 
-    .red_text {
-        color: red !important;
+
+}
+
+.form_checkbox[direction="true"] {
+    display: flex;
+
+    .checkbox {
+
+
+        // Text
+        &+label {
+            display: flex;
+            padding-right: 29px;
+
+            // Checkbox
+            &:before {
+                position: absolute;
+                display: block;
+                right: 0;
+                top: 0;
+                content: "";
+                background: transparent;
+                width: $checkbox-size;
+                height: $checkbox-size;
+
+                box-shadow: inset 0 0 0 1px $checkbox-border;
+                border-radius: 4px;
+                transition: 200ms ease-in-out all;
+
+                @media (max-width: 460px) {
+                    width: 17px;
+                    height: 17px;
+                }
+            }
+
+            // Tick
+            &:after {
+                position: absolute;
+                display: block;
+                top: 5px;
+                right: 6px;
+                content: "";
+                width: 6px;
+                height: 8px;
+                border-right: 2px solid transparent;
+                border-bottom: 2px solid transparent;
+                transform: rotate(45deg);
+
+                transition: 200ms ease-in-out all;
+
+                @media (max-width: 460px) {
+                    width: 6px;
+                    height: 5px;
+                }
+            }
+        }
+
+        // Hover
+        &+label:hover {
+            color: #333;
+        }
+
+        // Focus
+        &+label:focus {
+            outline: none;
+        }
+
+        // Checked
+        &:checked {
+            &+label {
+                &:before {
+                    background: $checkbox-selected;
+                    box-shadow: none;
+                }
+
+                &:after {
+                    border-color: white;
+                }
+            }
+        }
+
     }
 }

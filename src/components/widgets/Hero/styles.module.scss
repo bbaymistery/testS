@@ -104,7 +104,8 @@
 
             .points_wrapper {
                 display: grid;
-                grid-template-columns: repeat(2, minmax(0, 300px)) repeat(2, minmax(0, 205px)) auto;
+                                       grid-template-columns: repeat(2, minmax(0, 300px)) repeat(2, minmax(0, 205px)) 128px;
+
                 gap: 1rem;
                 width: 100%;
 
@@ -144,6 +145,9 @@
                 @media (max-width: 1000px) {
                     grid-template-columns: 1fr; // Single column layout
                     grid-template-areas: "pickup" "dropoff" "date" "time" "button";
+                        // Time select
+                            .btn_div {
+                            }
                 }
 
                 .main_search_wrapper {

@@ -1,9 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { ifHasUnwantedCharacters } from "../../../helpers/ifHasUnwantedCharacters";
+
 import TextInput from "../TextInput";
 import styles from "./styles.module.scss";
 const CheckForTrain = (props) => {
-  let { point,  onChange = () => { }, errorMessage } = props
+  let { point, onChange = () => { }, errorMessage } = props
+    const state = useSelector(state => state.pickUpDropOffActions)
+    let { appData } = state
   const onchangeHandler = (e, params = {}) => {
     let { value } = e.target
     if (ifHasUnwantedCharacters(value)) return
@@ -15,7 +19,7 @@ const CheckForTrain = (props) => {
       {point.pcatId === 3 ?
         (<div className={styles.insideInputs}>
           <div className={styles.insideInputs_input}>
-            <TextInput label="Train Number" type="text" name="trainNumber" value={point.trainNumber} onChange={(e) => onchangeHandler(e)} errorMessage={errorMessage} />
+            <TextInput label={appData?.words["strTrainNumber"]} type="text" name="trainNumber" value={point.trainNumber} onChange={(e) => onchangeHandler(e)} errorMessage={errorMessage} />
           </div>
         </div>)
         : <React.Fragment></React.Fragment>}

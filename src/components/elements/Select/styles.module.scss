@@ -6,6 +6,7 @@
           align-items: center;
           position: relative;
           width: 100%;
+
           .select {
               position: relative;
               display: block;
@@ -34,7 +35,7 @@
                   transform: rotate(-180deg);
               }
 
-      
+
               .select__field {
                   display: block;
                   opacity: 1;
@@ -78,41 +79,33 @@
               }
 
               .flightinfo_div {
-                  background-color: red;
+
                   border-radius: 0px;
                   position: absolute;
                   width: 650px;
+                  height: 400px !important;
+                  overflow-y: scroll;
                   padding: 0px 0px 14px;
-                  top: -300px;
+                  top: -345px;
                   right: -652.5px;
                   z-index: 6000;
-                  border: 3px solid $blue-1;
+                  border: 3px solid $--color-accent-1;
                   border-radius: 4px;
                   background-color: #fff;
                   padding: 5px;
-
                   display: none;
 
-                  &::after {
-                      content: " ";
-                      left: -3px;
-                      position: absolute;
-                      border: 9px solid $blue-1;
-                      border-bottom-color: transparent;
-                      border-right-color: transparent;
-                      bottom: -18px;
-                  }
+
+
 
                   p {
                       font-size: 14px;
-                      font-family: $font-jost;
                       font-weight: 400;
                       margin-bottom: 10px;
 
                       .primary_text {
                           font-weight: 500;
-                          color: $blue-1;
-                          font-family: $font-jost;
+                          color: $--color-accent-1;
                       }
                   }
 
@@ -122,12 +115,12 @@
                   .flightinfo_div {
                       display: block;
 
-                      @media (max-width: 990px) {
+                      @media (max-width: 1300px) {
                           display: none;
-                         
+
                       }
 
-                     
+
                   }
 
               }
@@ -141,23 +134,23 @@
                   transform-origin: 0 0;
                   transition: 200ms transform ease-out 200ms;
                   will-change: transform;
-                  font-size: 13px ;
-                  font-weight: 500 ;
+                  font-size: 13px;
+                  font-weight: 500;
                   font-family: $font-jost;
-            color: $label_text_color;
+                  color: $label_text_color;
                   display: flex;
                   align-items: center;
                   z-index: 1000;
                   cursor: pointer;
                   text-transform: capitalize;
-               
+
 
                   @media (max-width: 352px) {
                       font-size: 12px !important;
                   }
               }
 
-     
+
 
               .form_input_error {
                   position: absolute;
@@ -175,12 +168,13 @@
               display: flex;
               align-items: center;
               justify-content: center;
-              color: #13357b;
+              color: $--color-accent-1;
+
               margin-left: 7px;
               cursor: pointer;
               display: none;
 
-              @media (max-width: 990px) {
+              @media (max-width: 1300px) {
                   display: block;
               }
           }

@@ -1,0 +1,56 @@
+   const [confirmation, setConfirmation] = useState(true);
+
+
+
+
+    // prompt the user if they try and leave with unsaved changes
+    useEffect(() => {
+        let previousUrl = "/transfer-details"
+        let nextUrl = "/reservations-document"
+        const confirmationMessage = "If you leave the page, all data will be deleted.";
+        const beforeUnloadHandler = async (e) => {
+            //when we click to close browser
+            // /in case if it is cancelled
+
+            if (confirmation) {
+                (e || window.event).returnValue = confirmationMessage;
+                return confirmationMessage;
+            }
+
+        };
+
+        // burasi bizim hangi sayfaya gecdigimizi soyler  (tiklayinca)
+        const beforeRouteHandler = (url) => {
+            if (confirmation) {
+                if (url === nextUrl || url === previousUrl) {
+                    setConfirmation(false)
+                    return
+                } else {
+                    setConfirmation(true)
+                }
+                if (Router.pathname !== url && !confirm(confirmationMessage)) {
+                    Router.events.emit("routeChangeError");
+                    throw `Route change to "${url}" was aborted (this error can be safely ignored). See https://github.com/zeit/next.js/issues/2476.`;
+                }
+            }
+        };
+
+        const handleEndConcert = async () => {
+            const headers = new Headers();
+            headers.append("Content-Type", "application/json");
+            const method = "POST"
+            const reservationObj = reservations
+            const url = `${env.apiDomain}/api/v1/sessions/add`;
+            const body = JSON.stringify({ token: tokenForArchieve, details: reservationObj, stage: "PAYMENT_PAGE_IS_CLOSED" })
+            const response = await fetch(url, { method, body, headers, keepalive: true });
+            const data = await response.json();
+        }
+        window.addEventListener("beforeunload", beforeUnloadHandler);
+        window.addEventListener('unload', handleEndConcert)
+        Router.events.on("routeChangeStart", beforeRouteHandler);
+        return () => {
+            window.removeEventListener("beforeunload", beforeUnloadHandler);
+            window.removeEventListener('unload', handleEndConcert);
+            Router.events.off("routeChangeStart", beforeRouteHandler);
+        };
+    }, [confirmation]);

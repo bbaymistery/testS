@@ -1,21 +1,30 @@
-@import '../../../styles/fonts';
 @import '../../../styles/variables';
-
+.detailsShowIcon{
+    padding-left: 30px !important;
+    border-bottom: none !important;
+    @media(max-width:400px) {
+        padding-left: 5px !important;
+    }
+}
 .details {
     width: 100%;
     flex-direction: column;
     display: flex;
-    border-bottom: 1px solid $border;
-    font-family: $font-jost;
+    border-bottom: 1px solid $--color-light-6;
+
+
     .details_bottom_container {
 
-      
-        .point_adress {
+        .point_adress[direction="true"] {
+            text-align: right;
+        }
+
+        .point_adress[direction="false"] {
             text-align: left;
         }
 
         .point_adress {
-            color: #051036;
+            color: $--color-dark-1;
             font-weight: 500;
             font-size: 16px;
 
@@ -24,9 +33,20 @@
             }
         }
 
-     
+        .details_bottom_description[direction="true"] {
+            display: flex;
+            flex-direction: row-reverse;
 
-        .details_bottom_description {
+            .bottom_main_desc {
+                flex-direction: row-reverse;
+
+                span:nth-child(1) {
+                    padding-left: 8px;
+                }
+            }
+        }
+
+        .details_bottom_description[direction="false"] {
             justify-content: flex-start;
         }
 
@@ -47,8 +67,8 @@
             i {
                 font-size: 4px;
                 font-weight: bold;
-                color: rgb(3, 3, 3);
-                color: rgb(185 192 255);
+                color: $--color-accent-1;
+                display: none;
             }
 
             .bottom_main_desc {
@@ -59,14 +79,29 @@
                 span {
                     &:nth-child(1) {
                         padding-right: 8px;
+                        color: $--color-accent-1;
+
                     }
                 }
-                .flight_has_landed{
+
+                .flight_has_landed {
                     text-transform: lowercase !important;
                     text-decoration: none;
                 }
             }
 
+        }
+
+        .details_bottom_description_2 {
+            .bottom_main_desc {
+                display: flex !important; 
+                flex-direction: column !important;
+                span {
+                    &:nth-child(2) {
+                        text-decoration: underline;
+                    }
+                }
+            }
         }
     }
 }

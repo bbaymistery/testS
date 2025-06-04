@@ -10,9 +10,6 @@
     right: 0px;
     top: 0px;
     bottom: 0px;
-    z-index: 9999999;
-    padding: 100px !important;
-    margin: 0px;
     height: 100%;
     width: 100%;
     animation: zoomout;
@@ -22,59 +19,47 @@
     animation-delay: .18s;
     animation-iteration-count: 1;
     animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-
-    @media (max-width: 600px) {
-        padding: 40px !important;
-    }
-
-    @media (max-width: 450px) {
-        padding: 20px !important;
-    }
+    z-index: 999999;
 
     &_container {
         max-width: 450px;
         width: 100%;
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: white;
         border-radius: 10px;
-        padding: 15px;
         display: flex;
         flex-direction: column;
         box-shadow: rgba(225, 225, 225, 0.35) 12px 8px 15px;
-        border: 2px solid rgba(0, 0, 255, 1);
-        color: black;
-        font-weight: 400;
-        text-align: center;
-        padding: 15px 20px;
+        border: 2px solid $--color-accent-1-dark;
         transition: .5s ease-in-out;
+        max-height: 300px;
+        overflow-y: scroll;
+        position: relative;
+        padding: 22px;
 
-
-
-
-
-
-        p {
-            @media (max-width: 600px) {
-                font-size: 12px;
-            }
-
-            @media (max-width:500px) {
-                font-size: 11px;
-            }
+        /* Scrollbar için tüm tarayıcılara uygun stil */
+        &::-webkit-scrollbar {
+            width: 3px !important;
+            height: 6px;
         }
 
-        .button_div {
+        &::-webkit-scrollbar-thumb {
+            background-color: $--color-accent-1-dark;
+            border-radius: 100px;
+        }
+
+
+        .btn_div {
             display: flex;
             justify-content: center;
-            margin-top: .75rem;
-            align-items: center;
-
-            button {}
         }
 
-
-
-
+        .close_icon {
+            display: none;
+        }
     }
+
+
+
 }
 
 

@@ -1,0 +1,65 @@
+@import '../../../../styles/variables';
+
+.selected_points_details {
+    h2 {
+        color: $--color-dark-1;
+        font-weight: 500;
+        margin-bottom: 15px;
+        font-size: 22px;
+        padding-top: 30px;
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+
+        i {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $--color-accent-1;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px;
+            margin-top: 3px;
+            display: none;
+
+            @media(max-width:990px) {
+                display: block;
+            }
+        }
+    }
+
+    .selecteditems {
+        display: flex;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+
+        @media (max-width:768px) {
+            grid-template-columns: 1fr;
+            display: grid;
+        }
+
+        .points {
+            min-height: 70px;
+            flex: 1;
+
+            .points_header {
+                font-size: 16px;
+                color: rgb(105, 116, 136);
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
+
+
+        }
+
+
+        .selectedlist_points_left {
+            z-index: 99999 !important;
+        }
+
+        .selectedlist_points_right {
+            z-index: 1 !important;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+.buttons,
+.directionbuttons {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-top: 3rem;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .left {
+        display: flex;
+        justify-content: space-between;
+
+        flex-basis: 100%;
+
+
+        button {
+            border-radius: 4px !important;
+            padding: 6px 10px;
+            max-width: 163px !important;
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+
+   
+        }
+    }
+
+
+}

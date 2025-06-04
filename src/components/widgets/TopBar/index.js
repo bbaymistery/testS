@@ -21,7 +21,8 @@ const TopBar = ({ pageUrl }) => {
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
   const menuRef = useRef(null);
 
-  const isSpecialPage = ['/account-users', '/my-bookings', '/quotation', '/transfer-details', "/payment"].includes(pageUrl);
+  const isSpecialPage = ['/account-users', '/my-bookings', '/quotation', '/transfer-details', "/payment-details"].includes(pageUrl);
+  
   const isMobile = windowDimensions.width < 990;
   const [languageStatus, setLanguageStatus] = useState(false)
   const [currencyStatus, setCurrencyStatus] = useState(false)

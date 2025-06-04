@@ -1,0 +1,42 @@
+@import '../../../../styles/variables';
+
+//general classes
+.passenger_details_div {
+
+
+    h2 {
+        color: $--color-dark-1;
+        font-weight: 500;
+        margin-bottom: 15px;
+        font-size: 22px;
+        text-transform: capitalize;
+    }
+
+    .return_pas_details_header {
+        margin-bottom: 40px;
+    }
+
+    .passenger_details {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+
+        @media (max-width:768px) {
+            grid-template-columns: 1fr;
+        }
+
+        .input_div {
+
+            p {
+                color: $--color-accent-1;
+                padding-left: 10px;
+                font-size: 14px;
+                font-weight: 500;
+            }
+
+
+        }
+
+
+    }
+}

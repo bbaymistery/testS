@@ -1,0 +1,314 @@
+@import '../../styles/variables';
+
+.page {
+    position: relative;
+    background-color: white;
+    margin-left: 60px;
+
+    @media (max-width: 990px) {
+        padding-top: 30px;
+        margin-left: 0px;
+    }
+
+
+
+    &_section {
+        @media (max-width: 1510px) {
+            margin: 0 20px !important;
+        }
+
+        @media (max-width: 1450px) {
+            margin: 0 40px !important;
+        }
+
+        @media (max-width: 450px) {
+            margin: 0 10px !important;
+        }
+
+        &_container {
+            position: relative;
+            max-width: 1300px !important;
+
+            @media (max-width: 1500px) {
+                padding: 0px !important;
+            }
+
+            .payment_details_section {
+                padding-top: 0px;
+                padding-bottom: 40px;
+                width: 100%;
+                position: relative;
+
+
+                div {
+                    .main_container {
+                        max-width: 1070px;
+                        width: 100%;
+                        background-color: transparent;
+                        position: relative;
+                        gap: 1rem;
+                        margin: 0 auto;
+                        z-index: 1;
+                        margin-bottom: 1.5rem;
+                        display: flex;
+                        gap: 1rem;
+
+                        .left {
+                            flex: 0.35;
+                            // border: 1px solid $--color-light-6;
+                            border-radius: 3px;
+                            height: min-content;
+                            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+                            @media (max-width: 990px) {
+                                display: none;
+                            }
+
+                            .left_top_title {
+                                padding: 10px 10px;
+                                font-weight: 500;
+                                background-color: $--color-light-3;
+                                color: black;
+                                font-size: 20px;
+                                border-bottom: 1px solid $--color-light-6;
+                            }
+
+
+                            .left_content_of_card {
+                                padding: 20px 10px;
+
+
+                                .show_ondestkop {
+                                    @media (max-width: 990px) {
+                                        display: none;
+                                    }
+
+                                }
+
+                                .image_div {
+                                    .names {
+                                        display: flex;
+                                        justify-content: space-between;
+                                        padding-top: 15px;
+
+                                        .text_2 {
+                                            color: $--color-dark-1;
+                                            font-weight: 500;
+
+                                        }
+
+                                        .text_1 {
+                                            color: $input_text_color;
+                                            font-size: 17px;
+                                            font-weight: 500;
+
+                                        }
+                                    }
+
+                                    .image {
+                                        padding-top: 10px;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+
+                                        img {
+                                            width: 300px;
+                                            object-fit: contain;
+                                            height: 97px;
+                                        }
+                                    }
+                                }
+
+                                .tour_image_div {
+                                    position: relative;
+                                    margin-top: 1.5rem;
+                                    border: 5px solid $--color-light-6;
+                                    border-radius: 10px;
+                                    height: 240px !important;
+                                    overflow: hidden;
+
+                                }
+
+                                .car_info {
+                                    padding-top: 15px;
+
+                                    .type {
+                                        background-color: $--color-accent-1;
+                                        color: white;
+                                        font-weight: 500;
+                                        padding: 4px 10px;
+                                    }
+
+                                    .icons {
+                                        display: grid;
+                                        grid-template-columns: 1fr 1fr 1fr;
+                                        place-items: center;
+                                        border: 1px solid $--color-light-6;
+
+
+                                        .icon_div {
+                                            padding: 10px 0px;
+                                            width: 100%;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            border: 1px solid $--color-light-1;
+
+                                            i {
+                                                color: $input_text_color;
+                                                font-weight: bold;
+                                                margin-right: 4px;
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+
+                        }
+
+                        .right {
+                            flex: 0.65;
+                            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                            border-radius: 3px;
+
+                            @media (max-width: 990px) {
+                                flex: 1
+                            }
+
+                            .right_top_title {
+                                padding: 10px 10px;
+                                font-weight: 500;
+                                background-color: $--color-light-3;
+                                color: black;
+                                font-size: 20px;
+                                border-bottom: 1px solid $--color-light-6;
+                                text-transform: capitalize;
+
+                            }
+
+
+                            .passenger_details {
+                                padding: 10px 10px;
+
+                                .card_info {
+                                    .info {
+                                        .show_onmobile {
+
+                                            display: none;
+
+                                            @media(max-width:990px) {
+                                                display: block;
+                                            }
+                                        }
+
+
+                                        li:nth-child(even) {
+                                            background-color: $--color-light-3;
+                                            /* White for even rows */
+                                        }
+
+                                        li {
+                                            flex-direction: row;
+                                            color: $--color-dark-1;
+                                            padding: 10px 0;
+                                            letter-spacing: 0.7px;
+
+                                            &:not(:last-child) {
+                                                border-bottom: 1px solid $--color-light-6;
+                                            }
+
+                                            .details_headerr_li {
+
+                                                display: grid;
+                                                grid-template-columns: 150px 1fr;
+                                                align-items: center;
+                                                letter-spacing: 1px;
+                                                font-size: 12.4px;
+
+                                                @media (max-width:450px) {
+                                                    grid-template-columns: 136px 1fr;
+                                                }
+
+                                                .li_info {
+                                                    display: grid;
+                                                    grid-template-columns: 25px 1fr;
+                                                    align-items: center;
+                                                    gap: 5px;
+
+
+
+                                                    @media (max-width:450px) {
+                                                        gap: 0px;
+                                                    }
+
+                                                    .property {
+                                                        color: black;
+                                                        font-weight: bold;
+                                                        font-size: 14px;
+                                                        text-transform: capitalize;
+
+                                                        @media (max-width:450px) {
+                                                            font-size: 13px;
+                                                        }
+                                                    }
+
+                                                    i {
+                                                        color: $--color-accent-1;
+                                                        font-size: 13px;
+                                                        padding: 5px;
+                                                        display: flex;
+                                                        align-items: center;
+                                                        justify-content: center;
+
+                                                        @media (max-width:450px) {
+                                                            font-size: 11px;
+                                                        }
+
+                                                    }
+
+                                                }
+
+                                                .value {
+                                                    margin-left: 2px;
+                                                    font-weight: 500;
+                                                    font-size: 13px;
+
+                                                    @media (max-width:350px) {
+                                                        font-size: 11px !important;
+                                                    }
+                                                }
+                                            }
+
+
+                                        }
+                                    }
+
+
+                                }
+
+                            }
+
+                            .btn_div {
+                                padding: 10px 10px;
+                                display: flex;
+                                justify-content: flex-end;
+                                align-items: flex-end;
+
+                                @media (max-width: 990px) {
+                                    button {
+                                        width: 100%;
+
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+
+            }
+        }
+    }
+}

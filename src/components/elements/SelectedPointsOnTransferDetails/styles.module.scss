@@ -1,18 +1,26 @@
-$mainBlack: #0d233e;
-$black1: #0D233E;
-$black3: #5D646D;
-$black3_light: #F5F7FC;
-$mainBlue: #287dfa;
-$mainBlueDark: #0F6EFA;
-$bg_light: rgb(245, 247, 252);
-@import '../../../styles/fonts';
+@import '../../../styles/variables';
+
+.taxideal_selected {
+
+    .inside_inputs_istaxideal {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .form_input {
+            background-color: red;
+
+         
+        }
+    }
+}
 
 .selected_list {
     margin: 8px 0px;
     position: relative;
     padding: 10px 16px;
     transition: .5s ease-in-out;
-    background-color: #ededed;
+    background-color: $--color-accent-1-light;
     animation: animate;
     opacity: 1;
     animation-duration: 2s;
@@ -20,23 +28,24 @@ $bg_light: rgb(245, 247, 252);
     animation-iteration-count: 1;
     animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
     border-radius: 5px;
-   margin-top: 1rem !important;
+
+    margin-top: 1rem !important;
 
     &:hover {
-        background-color: darken(#F5F5F5, 3%);
-
-
+        background-color: darken($--color-accent-1-light, 3%);
     }
 
     .list_container {
         display: flex;
         flex-direction: column;
 
-
         .list {
             display: flex;
             align-items: center;
-            margin-bottom: 8px;
+            padding: 10px;
+            box-shadow: $box-shadow-1;
+            background: white;
+            margin-bottom: 10px;
 
             // justify-content: space-between;
             .list_number {
@@ -61,10 +70,9 @@ $bg_light: rgb(245, 247, 252);
             }
 
             .list_description {
-                color: $black3;
-                font-size: 15px;
+                color: $--color-dark-1;
+                font-size: 14px;
                 font-weight: 500;
-                font-family: $font-jost;
                 flex: 1;
 
                 @media (max-width: 520px) {
@@ -75,8 +83,16 @@ $bg_light: rgb(245, 247, 252);
 
         }
 
+        .inside_inputs_istaxideal {
+            position: relative;
+
+            select {
+                display: none;
+            }
+        }
+
         .insideInputs {
-            // margin-top: .75rem;
+            margin-top: 10px;
 
             .insideInputs_input {
                 display: flex;

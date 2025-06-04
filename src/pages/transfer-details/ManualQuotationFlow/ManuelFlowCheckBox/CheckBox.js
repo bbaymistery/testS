@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./checkbox.module.scss";
-const CheckBox = ({ textSame, textNotSame ,}) => {
+import styles from "./styles.module.scss";
+const CheckBox = ({ textSame, textNotSame, direction }) => {
   const dispatch = useDispatch()
   let state = useSelector((state) => state.pickUpDropOffActions)
   let { params: { passengerDetailsStatus } } = state
@@ -10,10 +10,11 @@ const CheckBox = ({ textSame, textNotSame ,}) => {
 
 
   return (
-    <div className={styles.form_checkbox} >
+    <div className={styles.form_checkbox} direction={String(direction === 'rtl')}>
       <input className={styles.checkbox} type="checkbox" id="checkbox-2" defaultChecked={passengerDetailsStatus} />
       <label htmlFor="checkbox-2" className={`${!passengerDetailsStatus ? styles.primary_text : styles.red_text}`} onClick={(e) => onchangeHandler(e)}>
-        {passengerDetailsStatus ? `${textSame}` : <>the passenger details <span className={styles.textMiddle}> are not same{"  "}</span> for both journey</>} 
+
+        {passengerDetailsStatus ? `${textSame}` : <>{textNotSame}</>}
       </label>
     </div>
   );
