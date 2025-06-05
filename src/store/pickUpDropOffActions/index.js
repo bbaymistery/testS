@@ -32,6 +32,7 @@ import RESELECT_POINTS_FROM_STORE from "./RESELECT_POINTS_FROM_STORE";
 import GET_APP_DATA from "./GET_APP_DATA";
 import SET_ACCOUNT_ID from "./SET_ACCOUNT_ID";
 import SET_CURRENCY from "./SET_CURRENCY";
+import SET_QUOTATION_ON_SPECIAL_CASE from "./SET_QUOTATION_ON_SPECIAL_CASE";
 
 
 
@@ -89,6 +90,10 @@ export const pickUpDropOffActions = (state = INITIAL_STATE, action) => {
     case 'SWITCH_JOURNEY': {
       return SWITCH_JOURNEY({ state, action })
     }
+       case 'SET_QUOTATION_ON_SPECIAL_CASE': {
+      return SET_QUOTATION_ON_SPECIAL_CASE({ state, action })
+    }
+    
     case 'SET_CURRENCY': {
       return SET_CURRENCY({ state, action })
     }

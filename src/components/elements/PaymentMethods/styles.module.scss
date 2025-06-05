@@ -6,8 +6,8 @@
     max-width: 1070px;
     margin: 0 auto;
     width: 100%;
-    font-family: $font-jost;
-
+    box-shadow: $box-shadow-1;
+background-color: #fbf9f6eb;
     @media (max-width:768px) {
         padding: 10px 0px;
     }

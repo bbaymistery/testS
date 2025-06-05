@@ -4,19 +4,17 @@
 
 
 .document_details_section_pdf {
-    // border: 1px solid red;
     min-width: 796px;
     width: 100%;
     margin: 0 auto;
     max-width: 796px;
-    // opacity: 0;
 
     .first_section {
         margin: 0 auto;
         text-align: center;
 
         .icon_div {
-            background-color: $gray;
+            background-color: $--color-light-2;
             width: 80px !important;
             height: 80px;
             margin: 0 auto;
@@ -33,35 +31,33 @@
 
         .succes_message {
             font-size: 30px;
-            font-family: $font-jost;
             margin-top: 20px;
             font-weight: 500;
-        color: $dark-4 ;
+        color: $primary ;
             margin-bottom: 0px !important;
 
         }
 
         .succes_message2 {
             font-size: 28px;
-            font-family: $font-jost;
             margin-top: 0px;
             font-weight: 500;
-                        color: $dark-4;
+                           color: $primary ;
+
             margin-bottom: 0px !important;
 
         }
 
         .sub_succes_message {
-            font-family: $font-jost;
             margin-top: 5px;
             font-size: 15px;
-            color: $gray;
+            color: $--color-light-2;
 
         }
     }
 
     .second_section {
-        border: 1px dashed $blue-1;
+        border: 1px dashed $primary;
         margin-top: 25px;
         padding: 15px 50px 35px 50px;
         border-radius: 15px;
@@ -70,10 +66,9 @@
 
         .title {
             font-size: 20px;
-            color: $dark-4 !important ;
+            color: $primary !important ;
             font-weight: 500;
             letter-spacing: 1px;
-            font-family: $font-jost;
             text-align: center;
             margin-bottom: 25px;
 
@@ -89,15 +84,15 @@
             .column_div {
 
                 @media(max-width:700px) {
-                    border-bottom: 1px solid $border;
+                    border-bottom: 1px solid $--color-light-6;
                     padding-bottom: 10px;
                     padding-top: 10px;
                 }
 
                 .text1 {
                     font-size: 17px;
-                    color: $gray;
-                    font-family: $font-jost;
+                    color: $--color-light-2;
+ 
                     letter-spacing: 1px;
 
 
@@ -106,8 +101,7 @@
 
                 .text2 {
                     font-size: 18px;
-                    font-family: $font-jost;
-                    color: $blue-1;
+                    color: $primary;
                     font-weight: 500;
 
 
@@ -117,7 +111,7 @@
     }
 
     .third_section {
-        border: 1px solid $border;
+        border: 1px solid $--color-light-6;
         border-radius: 15px;
         padding: 15px 50px 5px 50px;
         margin-top: 40px;
@@ -127,10 +121,9 @@
         .title {
             margin-bottom: 10px;
             font-size: 20px;
-            color: $dark-4 !important;
+            color: $primary !important;
             font-weight: 500;
             letter-spacing: 1px;
-            font-family: $font-jost;
 
             text-align: center;
 
@@ -141,9 +134,8 @@
                 margin-bottom: 10px;
                 margin-top: 20px;
                 font-size: 20px;
-                        color: $dark-4 !important;
+                        color: $primary !important;
                 font-weight: 500;
-                font-family: $font-jost;
                 letter-spacing: 1px;
             }
         }
@@ -151,8 +143,7 @@
         .passenger_info {
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px solid $border;
-            font-family: $font-jost;
+            border-bottom: 1px solid $--color-light-6;
             padding: 12px 0px;
 
             &:last-child {
@@ -160,7 +151,7 @@
             }
 
             .left {
-                color:$gray;
+                color:$--color-light-2;
                 font-weight: 500;
 font-size: 17px;
 
@@ -170,7 +161,7 @@ font-size: 17px;
             .right {
                 font-size: 17px;
                 font-weight: 500;
-                color: $blue-1;
+                color: $primary;
 
 
             }

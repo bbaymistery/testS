@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux'
 const PickUpPoints = ({ selectedPickupPoints, showIcon, }) => {
   const state = useSelector(state => state.pickUpDropOffActions)
   let {  appData } = state
-  console.log({ appData });
 
   return (
     <div className={`${pointsStyle.details} ${showIcon ? pointsStyle.detailsShowIcon : ""}`}>

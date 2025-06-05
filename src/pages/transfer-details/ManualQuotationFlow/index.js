@@ -43,7 +43,6 @@ const ManualQuotationFlow = (props) => {
   const checkValidation = (e) => {
     let errorHolder = reservationSchemeValidator({ reservations, appData }, { checkTransferDetails: true });
     setInternalState({ errorHolder })
-    console.log(errorHolder);
 
     if (errorHolder.status === 200) router.push(`${language === 'en' ? "/payment-details" : `${language}/payment-details`}`)
   }

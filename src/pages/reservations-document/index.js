@@ -4,6 +4,7 @@ import Layout from "../../components/layouts/Layout";
 import styles from "./styles.module.scss";
 import pdf from "./pdf.module.scss"
 import { useSelector } from "react-redux";
+import { getDisplayedPrice } from '../../helpers/setCurrencyAndPrice'
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import ProgressBar from "../../components/elements/ProgresBar";
@@ -20,7 +21,7 @@ const ReservDocuments = (props) => {
   let loginToken = user ? user["x-auth-token"] : ""
   let loginUserId = user ? user.id : ""
   let state = useSelector((state) => state.pickUpDropOffActions)
-  let { reservations, params: { journeyType, tokenForArchieve, direction, language }, appData, paymentTypes } = state
+  let { reservations, params: { journeyType, tokenForArchieve, direction, language,selectedCurrency }, appData, paymentTypes } = state
   const router = useRouter()
   const carObject = appData?.carsTypes?.reduce((obj, item) => ({ ...obj, [item.id]: item, }), {});
 
@@ -81,14 +82,14 @@ const ReservDocuments = (props) => {
         } else {
           //if fail it means we dont have any reservation id So we made it null
           let location = "else part fetch response  https://api.london-tech.com/api/v1/corporate-account/reservation/add"
-          let message = 'AGENCY_ reservations-document Component - submitDataToGetReservId function fetch_response_ else part '
+          let message = 'Turkey AGENCY reservations-document Component - submitDataToGetReservId function fetch_response_ else part '
           let options = { requestOptions, response, body }
           window.handelErrorLogs(location, message, options)
         }
       })
       .catch((error) => {
         let location = error
-        let message = 'AGENCY_ reservations-document Component - submitDataToGetReservId function fetch_ cathc blog'
+        let message = 'Turkey AGENCY reservations-document Component - submitDataToGetReservId function fetch_ cathc blog'
         let options = { body }
         window.handelErrorLogs(location, message, options)
         console.log(error);
@@ -118,6 +119,14 @@ const ReservDocuments = (props) => {
                     let { phone, email, firstname } = passengerDetails
                     const [splitedHour, splitedMinute] = splitDateTimeStringIntoHourAndMinute(transferDateTimeString) || []
                     const [splitedDate] = splitDateTimeStringIntoDate(transferDateTimeString) || []
+                         const { symbol, displayedPrice } = getDisplayedPrice({ currencyId: selectedCurrency.currencyId, item: obj.quotation });
+                                        const totalDisplayedPrice = reservations.reduce((acc, obj) => {
+                                            const { symbol, displayedPrice } = getDisplayedPrice({
+                                                currencyId: selectedCurrency.currencyId,
+                                                item: obj.quotation
+                                            });
+                                            return acc + (+displayedPrice);
+                                        }, 0);
                     return (
                       <div key={index}>
                         <div className={styles.second_section}>
@@ -136,7 +145,9 @@ const ReservDocuments = (props) => {
                             <div className={styles.column_div}>
                               <div className={`${styles.text1}`}>Total</div>
                               <div className={`${styles.text2}`}>
-                                £{parseInt(journeyType) === 0 ? reservations[0].quotation.price : parseInt(reservations[0].quotation.price) + parseInt(reservations[1].quotation.price)}
+                                                                {symbol}{parseInt(journeyType) === 0 ? displayedPrice : totalDisplayedPrice}
+                            
+                                {/* £{parseInt(journeyType) === 0 ? reservations[0].quotation.price : parseInt(reservations[0].quotation.price) + parseInt(reservations[1].quotation.price)} */}
                               </div>
                             </div>
                             <div className={styles.column_div}>
@@ -179,7 +190,10 @@ const ReservDocuments = (props) => {
                           <DropOffPoints selectedDropoffPoints={selectedDropoffPoints} />
                           <div className={`${styles.passenger_info}`}>
                             <div className={styles.left}>Price</div>
-                            <div className={styles.right}>£{quotation.price}</div>
+                            <div className={styles.right}>
+                                                                {symbol}{ displayedPrice }
+
+                            </div>
                           </div>
                           <div className={`${styles.passenger_info}`}>
                             <div className={styles.left}>Ac. Ref. Number</div>
@@ -200,7 +214,7 @@ const ReservDocuments = (props) => {
                       <div className={pdf.first_section}>
                         <div className={pdf.icon_div}><i className="fa-solid fa-check"></i></div>
                         <p className={pdf.succes_message2}>Your booking is now confirmed!</p>
-                        <p className={pdf.sub_succes_message}> Booking details has been sent to: admin@bookingcore.test</p>
+                        <p className={pdf.sub_succes_message}> Booking details has been sent to: {reservations[0].passengerDetails.email}</p>
                       </div>
                       {reservations.map((obj, index) => {
                         let { transferDetails, passengerDetails, quotation, selectedPickupPoints, selectedDropoffPoints, paymentDetails: { paymentType, accountReferanceNumber } } = obj
@@ -208,6 +222,14 @@ const ReservDocuments = (props) => {
                         let { phone, email, firstname } = passengerDetails
                         const [splitedHour, splitedMinute] = splitDateTimeStringIntoHourAndMinute(transferDateTimeString) || []
                         const [splitedDate] = splitDateTimeStringIntoDate(transferDateTimeString) || []
+                         const { symbol, displayedPrice } = getDisplayedPrice({ currencyId: selectedCurrency.currencyId, item: obj.quotation });
+                                        const totalDisplayedPrice = reservations.reduce((acc, obj) => {
+                                            const { symbol, displayedPrice } = getDisplayedPrice({
+                                                currencyId: selectedCurrency.currencyId,
+                                                item: obj.quotation
+                                            });
+                                            return acc + (+displayedPrice);
+                                        }, 0);
                         return (
                           <div key={index}>
                             <div className={pdf.second_section}>
@@ -224,7 +246,8 @@ const ReservDocuments = (props) => {
                                 <div className={pdf.column_div}>
                                   <div className={pdf.text1}>Total</div>
                                   <div className={pdf.text2}>
-                                    £{parseInt(journeyType) === 0 ? reservations[0].quotation.price : parseInt(reservations[0].quotation.price) + parseInt(reservations[1].quotation.price)}
+                                                                                                   {symbol}{parseInt(journeyType) === 0 ? displayedPrice : totalDisplayedPrice}
+
                                   </div>
                                 </div>
                                 <div className={pdf.column_div}>
@@ -268,6 +291,13 @@ const ReservDocuments = (props) => {
                                 <div className={pdf.left}>Price</div>
                                 <div className={pdf.right}>£{quotation.price}</div>
                               </div> */}
+                                  <div className={`${styles.passenger_info}`}>
+                            <div className={styles.left}>Price</div>
+                            <div className={styles.right}>
+                                                                {symbol}{parseInt(journeyType) === 0 ? displayedPrice : totalDisplayedPrice}
+
+                            </div>
+                          </div>
                               <div className={`${styles.passenger_info}`}>
                                 <div className={styles.left}>Ac. Ref. Number</div>
                                 <div className={styles.right}>{accountReferanceNumber}</div>

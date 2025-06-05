@@ -14,6 +14,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import PaymentPageSummary from '../../components/elements/PaymentPageSummary'
+import { urlWithLangAtribute } from '../../helpers/urlWithLangAtrribute';
+import { getDisplayedPrice } from '../../helpers/setCurrencyAndPrice';
 
 const Payment = (props) => {
     let { env, data } = props
@@ -24,23 +26,22 @@ const Payment = (props) => {
 
 
     const carObject = appData?.carsTypes?.reduce((obj, item) => ({ ...obj, [item.id]: item, }), {});
-
-
     const dispatch = useDispatch()
 
     const [confirmation, setConfirmation] = useState(true);
+    const { nexturls, previousUrls, currentUrls } = urlWithLangAtribute({ languages: appData.languages, previousUrl: "/transfer-details", nextUrl: "/reservations-document", currentUrl: router.asPath })
 
     //passenger landing payment page We need archieveToken
     const fetchArchieveToken = async (params = {}) => {
-        // let { stage, } = params
+        let { stage, } = params
 
-        // const method = "POST"
-        // const reservationObj = reservations
-        // const url = `${env.apiDomain}/api/v1/sessions/add`;
-        // const headers = { "Content-Type": "application/json" }
-        // const body = JSON.stringify({ token: tokenForArchieve, details: reservationObj, stage })
-        // const response = await fetch(url, { method, body, headers, });
-        // const data = await response.json();
+        const method = "POST"
+        const reservationObj = reservations
+        const url = `${env.apiDomain}/api/v1/sessions/add`;
+        const headers = { "Content-Type": "application/json" }
+        const body = JSON.stringify({ token: tokenForArchieve, details: reservationObj, stage })
+        const response = await fetch(url, { method, body, headers, });
+        const data = await response.json();
 
 
     };
@@ -48,12 +49,13 @@ const Payment = (props) => {
 
     useEffect(() => {
         let hasPriceUpdateWarningShown = false;
+            console.log("focus 1");
 
         const handleFocus = async () => {
             if (hasPriceUpdateWarningShown) return; // ❗ Alert gösterildiyse tekrar çalışmasın
 
             const now = moment().tz("Europe/Istanbul");
-            console.log("focus");
+            console.log("focus 2");
 
             for (let index in reservations) {
                 const obj = reservations[index];
@@ -68,6 +70,8 @@ const Payment = (props) => {
                     return;
                 } else {
                     const newQuotationsResponse = await collectQuotationsAsync({ reservations, journeyType, env, currencyId: selectedCurrency.currencyId });
+                    console.log({ reservations, journeyType, env, currencyId: selectedCurrency.currencyId });
+                    console.log({ newQuotationsResponse });
 
                     if (newQuotationsResponse.status === 200) {
                         const newQuotations = newQuotationsResponse.data[index] || {};
@@ -79,6 +83,8 @@ const Payment = (props) => {
                             let prevQuotationDetails = getPriceDetailsFromQuotation({ 'quotation': previousQuotation }).data || {};
                             let newQuotationDetails = getPriceDetailsFromQuotation({ 'quotation': newQuotation }).data || {};
                             console.log({ prevQuotationDetails, newQuotationDetails });
+                            console.log({ newPrice: newQuotationDetails.price });
+                            console.log({ prevPrice: prevQuotationDetails.price });
 
                             if (newQuotationDetails.price !== prevQuotationDetails.price) {
                                 hasPriceUpdateWarningShown = true; // ❗ Alert gösterildi, artık tetiklenmesin
@@ -160,7 +166,10 @@ const Payment = (props) => {
         };
 
     }, [confirmation]);
+   useEffect(() => {
+        fetchArchieveToken({ stage: "LANDED_INTO_PAYMENT_PAGE" })
 
+    }, [])
     return (
         <Layout loggedIn={data} pageUrl={router.pathname}>
             <div className={`page ${styles.page} ${width < 990 ? "ml_0" : "0"}`}>
@@ -175,6 +184,8 @@ const Payment = (props) => {
                                 let { transferDateTimeString, passengersNumber, specialRequests } = transferDetails
                                 const [splitedHour, splitedMinute] = splitDateTimeStringIntoHourAndMinute(transferDateTimeString) || []
                                 const [splitedDate] = splitDateTimeStringIntoDate(transferDateTimeString) || []
+                                                         const { symbol, displayedPrice } = getDisplayedPrice({ currencyId: selectedCurrency.currencyId, item: obj.quotation });
+                                
                                 //here will be visible when passenger comes from home page
                                 const passengerDetailsConfig = [
                                     {
@@ -226,6 +237,11 @@ const Payment = (props) => {
                                         icon: "fa-solid fa-comment",
                                         label: appData.words["strNotes"],
                                         value: specialRequests,
+                                    },
+                                     {
+                                        icon: "fa-solid fa-money-bill",
+                                        label: appData.words["strPriceTitle"],
+                                        value: `${symbol} ${displayedPrice}`,
                                     },
                                 ];
                                 return (
@@ -303,23 +319,17 @@ const Payment = (props) => {
                                                                         </li>
                                                                     ))
                                                                 }
-
-
-
                                                             </ul>
                                                         </div>
                                                     </div>
-
                                                 </div>
-
-
                                             </div>
                                         </div>
                                     </div>
                                 )
                             })}
 
-                            {/* {<PaymentMethods env={env} />} */}
+                            {<PaymentMethods env={env} />}
                         </div>
                     </div>
                 </div>

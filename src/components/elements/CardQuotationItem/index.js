@@ -70,7 +70,6 @@ const CardQuotationItem = (params = {}) => {
   const carObject = appData?.carsTypes?.reduce((obj, item) => ({ ...obj, [item.id]: item, }), {});
   const [journeyAccrodionStatus, setJourneyAccrodionStatus] = useState(true)
   const [returnJourneyAccordionStatus, setReturnJourneyAccordionStatus] = useState(true)
-  console.log({ quotationImagesObjWebp });
 
 
   // Format the duration based on the language
