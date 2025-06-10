@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 const PickUpPoints = ({ selectedPickupPoints, showIcon, }) => {
   const state = useSelector(state => state.pickUpDropOffActions)
-  let {  appData } = state
+  let { appData } = state
 
   return (
     <div className={`${pointsStyle.details} ${showIcon ? pointsStyle.detailsShowIcon : ""}`}>
@@ -13,7 +13,6 @@ const PickUpPoints = ({ selectedPickupPoints, showIcon, }) => {
             <p className={pointsStyle.point_adress}>{i + 1}.{point?.address?.includes(point?.postcode) ? `${point?.address}` : `${point?.address} ${point?.postcode ? point?.postcode : ""}`}</p>
             {/*  //! for flight  */}
             {point?.flightDetails?.flightNumber && (
-
               <div className={pointsStyle.details_bottom_description}>
                 <i className="fa-solid fa-circle-dot"></i>
                 <div className={pointsStyle.bottom_main_desc}>
@@ -30,7 +29,7 @@ const PickUpPoints = ({ selectedPickupPoints, showIcon, }) => {
                 <div className={pointsStyle.bottom_main_desc}>
                   <span>{"Requested Pickup Time"}:</span>
                   <span className={pointsStyle.flight_has_landed}>
-                    {appData.words["strMinutesAfterFlightHasLanded"] || "{{}} minutes after Flight has landed".replace("{{}}", point?.flightDetails?.waitingPickupTime)}
+                    {(appData.words["strMinutesAfterFlightHasLanded"] || "{{}} minutes after Flight has landed").replace("{{}}", point?.flightDetails?.waitingPickupTime)}
                   </span>
                 </div>
               </div>

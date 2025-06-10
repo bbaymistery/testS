@@ -88,7 +88,7 @@ const PaymentMethods = (props) => {
     return updatedReservations
   }
   const fetchArchieveToken = async (params = {}) => {
-    let { token, paymentType, stage, updatedReservations } = params
+    let { token, paymentType, stage, updatedReservations } = params 
 
     let reservationObj = updatedReservations
 
