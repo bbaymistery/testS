@@ -13,7 +13,8 @@ import Recaptcha from '../../components/elements/Recaptcha'
 
 const Login = () => {
     const { loading, isAuthenticated, error } = useSelector((state) => state.authReducer);
-    const [handleInputs, setHandleInputs] = useState({ email: "demo@aplcars.com", pass: "Miranuras20092021", })
+    // const [handleInputs, setHandleInputs] = useState({ email: "demo@aplcars.com", pass: "Miranuras20092021", })
+    const [handleInputs, setHandleInputs] = useState({ email: "", pass: "", })
     const [alert, setAlert] = useState({ alert: false, message: "", close: false, });
     const [showPass, setshowPass] = useState(false);
     const router = useRouter();
@@ -74,7 +75,7 @@ const Login = () => {
                             </div>
 
                             <div className={styles.recaptcha}>
-                                {/* <Recaptcha onVerify={handleRecaptchaVerify} /> */}
+                                <Recaptcha onVerify={handleRecaptchaVerify} />
                             </div>
                             <button onClick={handleSend} disabled={loading} className={`btn btn_primary flex-center  ${loading ? "no_pointer" : ""}`}   >
                                 {loading ? <CircleLoading /> : "Sign In"}
