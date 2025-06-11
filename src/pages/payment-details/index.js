@@ -342,7 +342,7 @@ const Payment = (props) => {
 export default Payment;
 export async function getServerSideProps({ req, res }) {
     let verify = req.cookies["user-id"];
-    if (req.url === "/payment") {
+    if (req.url === "/payment-details") {
         return {
             redirect: {
                 destination: `/new-booking`,
