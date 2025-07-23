@@ -11,8 +11,9 @@ const Layout = ({ children, title = "APL- Agency  | APL Transfers | Turkey Trans
       <Head>
         <title>{title}</title>
         <meta name="keywords" content={keywords} />
-        <meta name="description" content={description} />  
-         <meta name="robots" content="noindex,nofollow" />
+        <meta name="description" content={description} />
+        <meta name="googlebot" content="index" />
+        <meta name="robots" content="index,follow" />
       </Head>
       {loggedIn && <TopBar pageUrl={pageUrl} />}
       {loggedIn && <Sidebar pageUrl={pageUrl} />}

@@ -101,19 +101,65 @@ function MyApp({ Component, pageProps }) {
 const makestore = () => store;
 const wrapper = createWrapper(makestore);
 MyApp.getInitialProps = wrapper.getInitialAppProps((store) => async ({ Component, ctx }) => {
+
   const env = await fetchConfig();
+
+  let pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
+  let appDataInitial = store.getState().initialReducer?.appData
+  let paymentTypesInitial = store.getState().initialReducer?.paymentTypes
+  // Pathname kontrolü
+  const excludePaths = ['/news', '/blog'];
+  const isExcluded = excludePaths.some((path) => ctx?.req?.url.toLowerCase().startsWith(path));
+
   // Fetch app data and payment types
-  const paymentUrl = `${env.apiDomain}/api/v1/payment-types`;
-  const appDataUrl = `${env.apiDomain}/app/en}`; // Use the preferred language if available, otherwise default to English
-  const urls = [paymentUrl, appDataUrl];
+  if (ctx?.req?.url) {
 
-  let response = await Promise.all(urls.map(async url => {
-    let resp = await fetch(url);
-    return resp.json();
-  }));
+    const appDataUrl = `${env.apiDomain}/app/en`;
+    const cdnDataUrl = `https://cdn.london-tech.com/app/en.json`;
+    let goFurtherToCdn = false
+    let __appDataInitial = {}
+    try {
+      let requestFetch = await fetch(appDataUrl);
+      __appDataInitial = await requestFetch.json();
+      if ((__appDataInitial || {}).status !== 200) {
+        goFurtherToCdn = true
+      }
 
-  let appDataInitial = response[1];
-  let paymentTypesInitial = response[0].data;
-  return { pageProps: { appData: appDataInitial, paymentTypes: paymentTypesInitial, env } }
+    } catch (error) {
+      __appDataInitial = appDataInitial || {}
+      goFurtherToCdn = true
+    }
+    try {
+      if (goFurtherToCdn) {
+        let requestFetch2 = await fetch(cdnDataUrl, { headers: { 'Cache-Control': 'no-cache' }, method: 'GET' });
+        __appDataInitial = await requestFetch2.json();
+      }
+    } catch (error) {
+
+    }
+
+    __appDataInitial = __appDataInitial || {};
+
+    appDataInitial = __appDataInitial
+    paymentTypesInitial = __appDataInitial.paymentTypes || [];
+
+    if (isExcluded) {
+      // Eğer rota /News veya /blog ile başlıyorsa verileri null yap
+      store.dispatch({ type: "GET_APP_DATA", data: { appData: null, paymentTypes: null, } });
+    } else {
+      // Dispatch values to Redux store
+      store.dispatch({ type: "GET_APP_DATA", data: { appData: appDataInitial, paymentTypes: paymentTypesInitial, } });
+    }
+
+  }
+
+  if (isExcluded) {
+  // return { pageProps: { appData: appDataInitial, paymentTypes: paymentTypesInitial, env } }
+    //
+    pageProps = { hasLanguage: "en", appData: null, paymentTypes: null, env}
+  } else {
+    pageProps = { appData: appDataInitial, hasLanguage: "en", env, }
+  }
+  return { pageProps: { ...pageProps, } };
 });
 export default wrapper.withRedux(MyApp);

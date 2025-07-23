@@ -5,7 +5,7 @@ const getEnvConfig = (config) => {
     return {
         websiteDomain: isDevelopment
         ? "http://localhost:8500"
-        : "https://agency.airport-pickups-london.com", 
+        : "https://www.agency.apltransfers.com", 
         apiDomain: config.API_SERVER_ORIGIN || "https://api.london-tech.com", // Use API domain from config
         status: {
             success: 200,
@@ -27,7 +27,3 @@ export async function fetchConfig() {
     return getEnvConfig(config);
 }
 
-/*
-          apiDomain: "https://api.london-tech.com",
-apiDomain: "https://api-backup.london-tech.com",
-*/
